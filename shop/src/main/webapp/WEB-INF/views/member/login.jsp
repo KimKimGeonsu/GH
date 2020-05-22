@@ -10,190 +10,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
-		
-		<!-- all css here -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="assets/css/animate.css">
-        <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="assets/css/chosen.min.css">
-        <link rel="stylesheet" href="assets/css/meanmenu.min.css">
-        <link rel="stylesheet" href="assets/css/themify-icons.css">
-        <link rel="stylesheet" href="assets/css/ionicons.min.css">
-        <link rel="stylesheet" href="assets/css/bundle.css">
-        <link rel="stylesheet" href="assets/css/style.css">
-        <link rel="stylesheet" href="assets/css/responsive.css">
-        <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+		<jsp:include page="../include_main/header_css.jsp" />
+		<jsp:include page="../include_main/header.jsp" />
     </head>
+    <style>
+    	.join-btn{float:right;}
+    </style>
     <body>
         <div class="wrapper">
-            <!-- header start -->
-            <header>
-                <div class="header-area transparent-bar">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-2 col-md-2 col-sm-5 col-5">
-                                <div class="language-currency">
-                                    <div class="language">
-                                        <select class="select-header orderby">
-                                            <option value="">ENGLISH</option>
-                                            <option value="">BANGLA </option>
-                                            <option value="">HINDI</option>
-                                        </select>
-                                    </div>
-                                    <div class="currency">
-                                        <select class="select-header orderby">
-                                            <option value="">USD</option>
-                                            <option value="">US </option>
-                                            <option value="">EURO</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="sticky-logo">
-                                    <a href="index.html"><img src="assets/img/logo/2.png" alt="" /></a>
-                                </div>
-                                <div class="logo-small-device">
-                                    <a href="index.html"><img alt="" src="assets/img/logo/logo.png"></a>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 col-md-8 d-none d-md-block">
-                                <div class="logo-menu-wrapper text-center">
-                                    <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
-                                    </div>
-                                    <div class="main-menu">
-                                        <nav>
-                                            <ul>
-                                                <li><a href="index.html">home</a>
-                                                </li>
-                                                <li><a href="about-us.html">about us </a></li>
-                                                <li><a href="shop.html">shop <i class="ion-ios-arrow-down"></i></a>
-                                                    <ul>
-                                                        <li><a href="product-details.html">Product details</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="#">pages <i class="ion-ios-arrow-down"></i></a>
-                                                    <ul>
-                                                        <li><a href="about-us.html">about us</a></li>
-                                                        <li><a href="cart.html">cart page</a></li>
-                                                        <li><a href="checkout.html">checkout</a></li>
-                                                        <li><a href="wishlist.html">wishlist</a></li>
-                                                        <li><a href="login-register.html">login</a></li>
-                                                        <li><a href="contact.html">contact</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="blog.html">blog <i class="ion-ios-arrow-down"></i></a>
-                                                    <ul>
-                                                        <li><a href="blog-details-standerd.html">about us</a></li>
-                                                    </ul>
-                                                </li>
-                                                <li><a href="contact.html">contact us</a></li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-2 col-md-2 col-sm-7 col-7">
-                                <div class="header-site-icon">
-                                    <div class="header-search same-style">
-                                        <button class="sidebar-trigger-search">
-                                            <span class="ti-search"></span>
-                                        </button>
-                                    </div>
-                                    <div class="header-login same-style">
-                                        <a href="login-register.html">
-                                            <span class="ti-user"></span>
-                                        </a>
-                                    </div>
-                                    <div class="header-cart same-style">
-                                        <button class="sidebar-trigger">
-                                            <i class="ti-shopping-cart"></i>
-                                            <span class="count-style">03</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="mobile-menu-area col-12">
-                                <div class="mobile-menu">
-                                    <nav id="mobile-menu-active">
-                                        <ul class="menu-overflow">
-                                            <li><a href="#">HOME</a>
-                                                <ul>
-                                                    <li><a href="index.html">home version 1</a></li>
-                                                    <li><a href="index-2.html">home version 2</a></li>
-                                                    <li><a href="index-3.html">home version 3</a></li>
-                                                    <li><a href="index-4.html">home version 4</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">pages</a>
-                                                <ul>
-                                                    <li><a href="about-us.html">about us</a></li>
-                                                    <li><a href="cart.html">cart page</a></li>
-                                                    <li><a href="checkout.html">checkout</a></li>
-                                                    <li><a href="wishlist.html">wishlist</a></li>
-                                                    <li><a href="login-register.html">login</a></li>
-                                                    <li><a href="contact.html">contact</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">shop</a>
-                                                <ul>
-                                                    <li><a href="#">shop grid</a>
-                                                        <ul>
-                                                            <li><a href="shop-grid-2-col.html"> grid 2 column</a></li>
-                                                            <li><a href="shop-grid-3-col.html"> grid 3 column</a></li>
-                                                            <li><a href="shop.html"> grid 4 column</a></li>
-                                                            <li><a href="shop-grid-6-col.html"> grid 6 column</a></li>
-                                                            <li><a href="shop-grid-box.html"> grid box style</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">shop list</a>
-                                                        <ul>
-                                                            <li><a href="shop-list.html"> list 1 column</a></li>
-                                                            <li><a href="shop-list-2-col.html"> list 2 column</a></li>
-                                                            <li><a href="shop-list-3-col.html"> list 3 column</a></li>
-                                                            <li><a href="shop-list-box.html"> list box style</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="shop-grid-view-5-col.html">product details</a>
-                                                        <ul>
-                                                            <li><a href="product-details.html">tab style</a></li>
-                                                            <li><a href="product-details-sticky.html">sticky style</a></li>
-                                                            <li><a href="product-details-gallery.html">gallery style</a></li>
-                                                            <li><a href="product-details-fixed-img.html">fixed image style</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">BLOG</a>
-                                                <ul>
-                                                    <li><a href="blog-masonry.html">Blog Masonry</a></li>
-                                                    <li><a href="#">Blog Standard</a>
-                                                        <ul>
-                                                            <li><a href="blog-left-sidebar.html">left sidebar</a></li>
-                                                            <li><a href="blog-right-sidebar.html">right sidebar</a></li>
-                                                            <li><a href="blog-no-sidebar.html">no sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="#">Post Types</a>
-                                                        <ul>
-                                                            <li><a href="blog-details-standerd.html">Standard post</a></li>
-                                                            <li><a href="blog-details-audio.html">audio post</a></li>
-                                                            <li><a href="blog-details-video.html">video post</a></li>
-                                                            <li><a href="blog-details-gallery.html">gallery post</a></li>
-                                                            <li><a href="blog-details-link.html">link post</a></li>
-                                                            <li><a href="blog-details-quote.html">quote post</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html"> Contact us</a></li>
-                                        </ul>
-                                    </nav>                          
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
             <div class="header-height"></div>
             <!-- main-search start -->
             <div class="main-search-active">
@@ -258,6 +82,9 @@
                                                             <a href="#">Forgot Password?</a>
                                                         </div>
                                                         <button type="submit" class="btn-style cr-btn"><span>Login</span></button>
+                                                        <a href="join">
+                                                        	<button type="button" class="btn-style cr-btn join-btn"><span>Join</span></button>
+                                                        </a>
                                                     </div>
                                                 </form>
                                             </div>

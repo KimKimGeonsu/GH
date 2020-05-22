@@ -3,7 +3,14 @@
 				
             <h3><c:out value="${sessionScope.admin}"/></h3>
             <h3><c:out value="${pageContext.request.contextPath}"/></h3>
-           
+            <style>
+            	.header-site-icon{padding-top:22px;}
+            	.login-join{margin-top:21px; text-align:right; color:gray;}
+            	.lg-btn:hover{opacity:0.5; transition:.3s;}
+            	.header-cart button span{background-color:black;}
+            	.login-register-tab-list.nav a.active h4{color:silver;}
+            	.login-form button{background-color:black}
+            </style>
             <!-- header start -->
             <header>
                 <div class="header-area transparent-bar">
@@ -32,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="sticky-logo">
-                                    <a href="index.html"><img src="assets/img/logo/2.png" alt="" /></a>
+                                    <a href="index.html"><img src="assets/img/logo/logo.png" style="width:72px" alt="" /></a>
                                 </div>
                                 <div class="logo-small-device">
                                     <a href="index.html"><img alt="" src="assets/img/logo/logo.png"></a>
@@ -41,7 +48,7 @@
                             <div class="col-lg-8 col-md-8 d-none d-md-block">
                                 <div class="logo-menu-wrapper text-center">
                                     <div class="logo">
-                                        <a href="index.html"><img src="assets/img/logo/logo.png" alt="" /></a>
+                                        <a href="/GH"><img src="assets/img/logo/logo.png" alt="" /></a>
                                     </div>
                                     <div class="main-menu">
                                         <nav>
@@ -92,6 +99,9 @@
                                 </div>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-7 col-7">
+                            	<div class="login-join">
+                            		<a href="login" class="lg-btn">로그인</a> / <a href="join" class="lg-btn">회원가입</a>
+                            	</div>
                                 <div class="header-site-icon">
                                     <div class="header-search same-style">
                                         <button class="sidebar-trigger-search">
@@ -99,14 +109,14 @@
                                         </button>
                                     </div>
                                     <div class="header-login same-style">
-                                        <a href="login">
+                                        <a href="">
                                             <span class="ti-user"></span>
                                         </a>
                                     </div>
                                     <div class="header-cart same-style">
                                         <button class="sidebar-trigger">
                                             <i class="ti-shopping-cart"></i>
-                                            <span class="count-style">03</span>
+                                            <span class="count-style">00</span>
                                         </button>
                                     </div>
                                 </div>
