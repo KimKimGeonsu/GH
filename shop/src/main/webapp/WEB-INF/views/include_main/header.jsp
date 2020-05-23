@@ -80,10 +80,10 @@
                                                  <c:if test="${sessionScope.admin eq 'admin' }">												
 												<li><a href="#">관리자모드</a>
                                                 <ul>
-                                                    <li><a href="index.html">home version 1</a></li>
-                                                    <li><a href="index-2.html">home version 2</a></li>
+                                                    <li><a href="shopAdd.admin">상품등록</a></li>
+                                                    <li><a href="shopList.admin">상품목록관리</a></li>
                                                     <li><a href="index-3.html">home version 3</a></li>
-                                                    <li><a href="${pageContext.request.contextPath}/admin/selectAll">회원관리</a></li>
+                                                    <li><a href="selectAll.admin">회원관리</a></li>
                                                 </ul>
                                             </li>                                         
                                          		</c:if>    
