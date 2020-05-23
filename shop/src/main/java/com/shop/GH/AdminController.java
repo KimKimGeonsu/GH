@@ -57,8 +57,12 @@ public class AdminController {
 		return "admin/shopAdd";
 	}
 	
-	//asdsad
-	//sssssss
+
+	//테스트용
+		@RequestMapping(value = "shop.dddddddaaan", method = RequestMethod.GET)
+		public String Tesddddt() {											
+			return "admin/shopAdd";
+		}
 	
 	
 }
