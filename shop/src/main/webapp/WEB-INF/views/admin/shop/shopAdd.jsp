@@ -55,6 +55,8 @@
 				</form>
 
 			</div>
+			
+			<h3><%=request.getRealPath("/") %></h3>
 		</div>
 		<!-- divbannerEnd -->
 
