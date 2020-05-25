@@ -43,41 +43,4 @@ public class AdminMember {
 //	public ModelAndView homess() {							
 //		return new ModelAndView("admin/home");
 //	}
-	
-	//회원목록조회
-	@RequestMapping(value = "selectAll.admin", method = RequestMethod.GET)
-	public ModelAndView selectAll() {							
-		List<MemberVO> list = m_service.selectAll();				
-		return new ModelAndView("admin/member/list","list",list);
-	}	
-	//회원삭제
-	@ResponseBody
-	@RequestMapping(value = "delete.admin", method = RequestMethod.GET)
-	public int deleteMember(@RequestParam("id")String id) {
-		int result = m_service.MemberDelete(id);
-		return result;
-		}
-
-	
-		//테스트용
-		@RequestMapping(value = "shop.dddddddaaan", method = RequestMethod.GET)
-		public String Tesddddt() {											
-			return "admin/shop/shopAdd";
-		}
-		
-		
-		//테스트용2
-				@RequestMapping(value = "shop.dsadasdaddddddaaan", method = RequestMethod.GET)
-				public String Tesddddasdasdast() {											
-					return "admin/shop/shopAdd";
-				}
-				
-
-				//테스트용3
-						@RequestMapping(value = "shop.dsadasdaddddddaaan", method = RequestMethod.GET)
-						public String Tesdddasdasdsadasdasdast() {											
-							return "admin/shop/shopAdd";
-						}
-				//테스트용4
-	
 }

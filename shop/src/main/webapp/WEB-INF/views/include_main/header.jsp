@@ -9,7 +9,7 @@
             	.lg-btn:hover{opacity:0.5; transition:.3s;}
             	.header-cart button span{background-color:black;}
             	.login-register-tab-list.nav a.active h4{color:silver;}
-            	.login-form button{background-color:black}
+            	.login-form button{background-color:black} 	
             </style>
             <!-- header start -->
             <header>
@@ -53,27 +53,43 @@
                                     <div class="main-menu">
                                         <nav>
                                             <ul>
-                                                <li><a href="index.html">home</a>
+                                                <li><a href="#">BEST</a>
                                                 </li>
-                                                <li><a href="about-us.html">about us </a></li>
-                                                <li><a href="shop.html">shop <i class="ion-ios-arrow-down"></i></a>
+                                                <li><a href="#">TOP<i class="ion-ios-arrow-down"></i></a>
                                                     <ul>
-                                                        <li><a href="product-details.html">Product details</a></li>
+                                                        <li><a href="#">반팔</a></li>
+                                                        <li><a href="#">긴팔</a></li>
+                                                        <li><a href="#">맨투맨/후드</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="#">pages <i class="ion-ios-arrow-down"></i></a>
+                                                <li><a href="#">OUTER<i class="ion-ios-arrow-down"></i></a>
                                                     <ul>
-                                                        <li><a href="about-us.html">about us</a></li>
-                                                        <li><a href="cart.html">cart page</a></li>
-                                                        <li><a href="checkout.html">checkout</a></li>
-                                                        <li><a href="wishlist.html">wishlist</a></li>
-                                                        <li><a href="login-register.html">login</a></li>
-                                                        <li><a href="contact.html">contact</a></li>
+                                                        <li><a href="#">자켓</a></li>
+                                                        <li><a href="#">코트/블레이져</a></li>
+                                                        <li><a href="#">가디건/조끼</a></li>
+                                                        <li><a href="#">패딩</a></li>
                                                     </ul>
                                                 </li>
-                                                <li><a href="blog.html">blog <i class="ion-ios-arrow-down"></i></a>
+                                                <li><a href="#">PANTS<i class="ion-ios-arrow-down"></i></a>
                                                     <ul>
-                                                        <li><a href="blog-details-standerd.html">about us</a></li>
+                                                        <li><a href="#">반바지</a></li>
+                                                        <li><a href="#">슬랙스</a></li>
+                                                        <li><a href="#">청바지</a></li>
+                                                        <li><a href="#">면바지</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">SHOES<i class="ion-ios-arrow-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">운동화/스니커즈</a></li>
+                                                        <li><a href="#">구두/로퍼</a></li>
+                                                        <li><a href="#">샌들/슬리퍼</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">공지사항 & 리뷰<i class="ion-ios-arrow-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">공지사항</a></li>
+                                                        <li><a href="#">QnA</a></li>
+                                                        <li><a href="#">리뷰</a></li>
                                                     </ul>
                                                 </li>
                                                 <!-- <li><a href="contact.html">contact us</a></li> -->                                                                                               

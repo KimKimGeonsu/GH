@@ -3,57 +3,75 @@ package com.shop.GH.vo;
 import java.util.Date;
 
 public class MemberVO {
-
-	private String userId;
-	private String password;
-	private String email;
-	private Date regDate;
-	private int checked;
-
-	public String getUserId() {
-		return userId;
+	private String USER_ID; 
+	private String USER_PASS; 
+	private String USER_NAME; 
+	private String USER_BIRTHDAY;
+	private String USER_ADDRESS;
+	private String USER_POSTCODE;
+	private String USER_PHONE;
+	private String USER_EMAIL;
+	private int USER_IS_OWNER;
+	private Date USER_REGIDATE;
+	
+	public String getUSER_ID() {
+		return USER_ID;
 	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUSER_ID(String uSER_ID) {
+		USER_ID = uSER_ID;
 	}
-
-	public String getPassword() {
-		return password;
+	public String getUSER_PASS() {
+		return USER_PASS;
 	}
-
-	public void setPassword(String password) {
-		this.password = password;
+	public void setUSER_PASS(String uSER_PASS) {
+		USER_PASS = uSER_PASS;
 	}
-
-	public String getEmail() {
-		return email;
+	public String getUSER_NAME() {
+		return USER_NAME;
 	}
-
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUSER_NAME(String uSER_NAME) {
+		USER_NAME = uSER_NAME;
 	}
-
-	public Date getRegDate() {
-		return regDate;
+	public String getUSER_BIRTHDAY() {
+		return USER_BIRTHDAY;
 	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setUSER_BIRTHDAY(String uSER_BIRTHDAY) {
+		USER_BIRTHDAY = uSER_BIRTHDAY;
 	}
-
-	public int getChecked() {
-		return checked;
+	public String getUSER_ADDRESS() {
+		return USER_ADDRESS;
 	}
-
-	public void setChecked(int checked) {
-		this.checked = checked;
+	public void setUSER_ADDRESS(String uSER_ADDRESS) {
+		USER_ADDRESS = uSER_ADDRESS;
 	}
-
-	@Override
-	public String toString() {
-		return "MemberVO [userId=" + userId + ", password=" + password + ", email=" + email + ", regDate=" + regDate
-				+ ", checked=" + checked + "]";
+	public String getUSER_POSTCODE() {
+		return USER_POSTCODE;
 	}
-
+	public void setUSER_POSTCODE(String uSER_POSTCODE) {
+		USER_POSTCODE = uSER_POSTCODE;
+	}
+	public String getUSER_PHONE() {
+		return USER_PHONE;
+	}
+	public void setUSER_PHONE(String uSER_PHONE) {
+		USER_PHONE = uSER_PHONE;
+	}
+	public String getUSER_EMAIL() {
+		return USER_EMAIL;
+	}
+	public void setUSER_EMAIL(String uSER_EMAIL) {
+		USER_EMAIL = uSER_EMAIL;
+	}
+	public int getUSER_IS_OWNER() {
+		return USER_IS_OWNER;
+	}
+	public void setUSER_IS_OWNER(int uSER_IS_OWNER) {
+		USER_IS_OWNER = uSER_IS_OWNER;
+	}
+	public Date getUSER_REGIDATE() {
+		return USER_REGIDATE;
+	}
+	public void setUSER_REGIDATE(Date uSER_REGIDATE) {
+		USER_REGIDATE = uSER_REGIDATE;
+	}	
 }
