@@ -19,28 +19,10 @@ public class MemberServiceImpl implements MemberService{
 	@Autowired
 	private MemberDAO dao;
 
-	//회원가입
 	@Override
-	public int register(MemberVO vo) {
+	public int join(MemberVO member) {
 		// TODO Auto-generated method stub
-		return dao.register(vo);
+		return 0;
 	}
-	
-	//조회 어드민
-	@Override
-	public List<MemberVO> selectAll() {
-		// TODO Auto-generated method stub
-		return dao.selectAll();
-	}
-
-	//어드민
-	@Override
-	public int MemberDelete(String id) {
-		// TODO Auto-generated method stub
-		return dao.MemberDelete(id);
-	}
-
-
-	
 
 }
