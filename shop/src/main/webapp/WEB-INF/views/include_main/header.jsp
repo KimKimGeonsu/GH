@@ -81,7 +81,7 @@
 												<li><a href="#">관리자모드</a>
                                                 <ul>
                                                     <li><a href="shopAdd.admin">상품등록</a></li>
-                                                    <li><a href="shopList.admin">상품목록관리</a></li>
+                                                    <li><a href="shopList.admin">상품리스트</a></li>
                                                     <li><a href="index-3.html">home version 3</a></li>
                                                     <li><a href="selectAll.admin">회원관리</a></li>
                                                 </ul>

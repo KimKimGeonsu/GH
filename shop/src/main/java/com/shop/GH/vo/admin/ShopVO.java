@@ -1,8 +1,8 @@
-package com.shop.GH.vo;
+package com.shop.GH.vo.admin;
 
 import java.util.Date;
 
-public class ShopAddVO {
+public class ShopVO {
 	private int C_NO;
 	private String C_NAME;
 	//
