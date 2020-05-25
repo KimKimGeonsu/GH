@@ -78,6 +78,6 @@ public class AdminMember {
 						public String Tesdddasdasdsadasdasdast() {											
 							return "admin/shop/shopAdd";
 						}
-	
+				//테스트용4
 	
 }
