@@ -80,6 +80,7 @@ public class AdminShop {
 			
 			
 			
+			
 			return "admin/shop/shopList";
 		}
 		
