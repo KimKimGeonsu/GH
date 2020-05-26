@@ -20,14 +20,35 @@
 							name="MAIN_IMG" />
 					</div>
 					<div class="inputArea">
-						<label>1차 분류</label> <select class="category1" name="PD_CATEGORY_NO">
+						<label>1차 분류</label> <select class="category1" name="PD_CATEGORY_NO" id="PD_CATEGORY_NO">
 							<option value="">전체</option>
 							<option value="100">상의</option>
-							<option value="상의">하의</option>
-						</select> <label>2차 분류</label> <select class="category2" name="cateCode">
-							<option value="">전체</option>
+							<option value="100">하의</option>
+						</select> 
+					 <label>2차 분류</label> <select class="category2" name="cateCode" id="cate2">
+							<!-- <option value="">전체</option> -->
 						</select>
 					</div>
+						<script type="text/javascript">
+					$("#PD_CATEGORY_NO").change(function() {
+						$("#cate2").empty();						
+						 $.ajax({
+							url:"cate.admin",
+							type:"POST",
+							data:{cate: $("#PD_CATEGORY_NO option:selected").val()},
+							dataType:"json",														
+							success:function(result){
+								console.log(result);						
+								 $.each(result,function(index,item){
+									 $("#cate2").append("<option value="+$(this).text()+">"+item.sc_NAME+"</option>");
+								 });																					
+								
+							},error:function(){
+								alert('대분류를 정해주세요');
+							}
+						}); 
+					});
+					</script>
 
 					<div class="inputArea">
 						<label for="gdsName">상품명</label> <input type="text" id="PD_NAME"
