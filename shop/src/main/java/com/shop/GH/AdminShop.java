@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.UUID;
@@ -23,12 +24,15 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shop.GH.service.admin.ShopService;
 import com.shop.GH.vo.admin.ShopVO;
+
+import sun.print.resources.serviceui;
 
 /**
  * @author 김건수
@@ -63,7 +67,7 @@ public class AdminShop {
 		if (new File(filePath+ymdPath).mkdirs()) {}
 		file.transferTo(new File(filePath+ymdPath+vo.getPD_IMG()));		
 		int result = shop.insertShop(vo);
-
+ 
 		response.setContentType("text/html;charset=utf-8");
 	
 		PrintWriter out = response.getWriter();
@@ -83,6 +87,14 @@ public class AdminShop {
 		
 		
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "cate.admin", method = RequestMethod.POST)
+	public List<ShopVO> cate(@RequestParam("cate") int cate) {
+		List<ShopVO> list =  shop.cate(cate);				
+		return list;	
+	}
+	
 	
 	
 	/**
@@ -180,8 +192,7 @@ public class AdminShop {
 	// 상품목록
 	@RequestMapping(value = "shopList.admin", method = RequestMethod.GET)
 	public ModelAndView shopList(ModelAndView mv) {
-		List<ShopVO> list = shop.listShop();
-		System.out.println(list);
+		List<ShopVO> list = shop.listShop();		
 		return new ModelAndView("admin/shop/shopList", "list", list);
 	}
 
