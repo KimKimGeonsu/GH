@@ -64,20 +64,6 @@ public class AdminMember {
 		public String Tesddddt() {											
 			return "admin/shop/shopAdd";
 		}
-		
-		
-		//테스트용2
-				@RequestMapping(value = "shop.dsadasdaddddddaaan", method = RequestMethod.GET)
-				public String Tesddddasdasdast() {											
-					return "admin/shop/shopAdd";
-				}
-				
 
-				//테스트용3
-						@RequestMapping(value = "shop.dsadasdaddddddaaan", method = RequestMethod.GET)
-						public String Tesdddasdasdsadasdasdast() {											
-							return "admin/shop/shopAdd";
-						}
-	
 	
 }
