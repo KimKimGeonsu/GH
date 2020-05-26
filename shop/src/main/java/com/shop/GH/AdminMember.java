@@ -59,11 +59,7 @@ public class AdminMember {
 		}
 
 	
-		//테스트용
-		@RequestMapping(value = "shop.dddddddaaan", method = RequestMethod.GET)
-		public String Tesddddt() {											
-			return "admin/shop/shopAdd";
-		}
 
 	
+
 }

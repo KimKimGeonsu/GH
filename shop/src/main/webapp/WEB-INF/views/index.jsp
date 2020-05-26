@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
+    pageEncoding="UTF-8"%>    
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <jsp:include page="include_main/header_css.jsp"/>
@@ -97,7 +96,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="slider-single-img slider-animated-1">
-                                        <img class="animated" src="assets/img/slider/1.png" alt="slider images">
+                                        <img class="animated" src="assets/img/testImg1.png" alt="slider images">
                                     </div>
                                 </div>
                             </div>
