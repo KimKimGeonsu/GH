@@ -3,9 +3,15 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="shopAdmin">
 
+	<!-- 등록 -->
+	<insert id="shopInsert">
+	insert into product_tbl values((SELECT NVL(MAX(PD_NO),0)+1 FROM PRODUCT_TBL),
+	#{PD_NAME},#{PD_CATEGORY_NO},#{PD_PRICE},#{PD_IMG},#{PD_QUANTITY},#{PD_INFO},0,sysdate)
+	</insert>
+
 	<!-- 조회 -->
 	<select id="shopList" resultType="shop">
-	select userid,email,regdate from hs_member where checked=1
+	select * from product_tbl
 	</select>
 	
 

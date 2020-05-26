@@ -16,15 +16,19 @@ public class ShopDAOImpl implements ShopDAO{
 	@Inject
 	private SqlSessionTemplate sql;
 
-	
-	
-	/**
-	 * @상품목록
-	 */
+		
+	//상품목록
 	@Override
 	public List<ShopVO> listShop() {
 		// TODO Auto-generated method stub
 		return sql.selectList("shopAdmin.shopList");
+	}
+
+	//상품등록
+	@Override
+	public int insertShop(ShopVO vo) {
+		// TODO Auto-generated method stub
+		return sql.insert("shopAdmin.shopInsert",vo);
 	}
 
 }

@@ -43,4 +43,22 @@ public class AdminMember {
 //	public ModelAndView homess() {							
 //		return new ModelAndView("admin/home");
 //	}
+	
+	//회원목록조회
+//	@RequestMapping(value = "selectAll.admin", method = RequestMethod.GET)
+//	public ModelAndView selectAll() {							
+//		//List<MemberVO> list = m_service.selectAll();				
+//		return new ModelAndView("admin/member/list","list",list);
+//	}	
+//	//회원삭제
+//	@ResponseBody
+//	@RequestMapping(value = "delete.admin", method = RequestMethod.GET)
+//	public int deleteMember(@RequestParam("id")String id) {
+//		//int result = m_service.MemberDelete(id);
+//		return result;
+//		}
+
+	
+
+
 }
