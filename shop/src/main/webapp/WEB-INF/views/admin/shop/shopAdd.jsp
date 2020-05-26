@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <jsp:include page="../../include_main/header_css.jsp" />
+<script src="resources/ckeditor/ckeditor.js"></script>
 <body>
 
 	<div class="wrapper">
@@ -44,9 +45,19 @@
 					</div>
 
 					<div class="inputArea">
-						<label for="gdsDes">상품소개</label>
+						<label for="PD_INFO">상품소개</label>
 						<textarea rows="5" cols="50" id="PD_INFO" name="PD_INFO"></textarea>
 					</div>
+					<script>
+						 var ckeditor_config = {
+						   resize_enaleb : false,
+						   enterMode : CKEDITOR.ENTER_BR,
+						   shiftEnterMode : CKEDITOR.ENTER_P,
+						   filebrowserUploadUrl : "ckeditor.admin"
+						 };
+						 
+						 CKEDITOR.replace("PD_INFO", ckeditor_config);
+						</script>	
 
 					<div class="inputArea">
 						<button type="submit" id="register_Btn" class="btn btn-primary">등록</button>
@@ -55,8 +66,7 @@
 				</form>
 
 			</div>
-			
-			<h3><%=request.getRealPath("/") %></h3>
+					
 		</div>
 		<!-- divbannerEnd -->
 
