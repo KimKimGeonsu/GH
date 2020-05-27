@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Nokshi - Minimalist eCommerce HTML5 Template</title>
+        <title>GH SHOP</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Favicon -->
@@ -73,15 +73,17 @@
                                         <div class="login-form-container">
                                             <div class="login-form">
                                                 <form action="#" method="post">
-                                                    <input type="text" name="user-name" placeholder="Username">
-                                                    <input type="password" name="user-password" placeholder="Password">
+                                                    <input type="text" name="USER_ID" placeholder="Username">
+                                                    <input type="password" name="USER_PASS" placeholder="Password">
                                                     <div class="button-box">
                                                         <div class="login-toggle-btn">
                                                             <input type="checkbox">
                                                             <label>Remember me</label>
                                                             <a href="#">Forgot Password?</a>
                                                         </div>
-                                                        <button type="submit" class="btn-style cr-btn"><span>Login</span></button>
+                                                        <a a href="login">
+                                                        	<button type="submit" class="btn-style cr-btn"><span>Login</span></button>
+                                                        </a>
                                                         <a href="join">
                                                         	<button type="button" class="btn-style cr-btn join-btn"><span>Join</span></button>
                                                         </a>

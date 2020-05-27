@@ -21,13 +21,6 @@ public class MemberDAOImpl implements MemberDAO{
 	
 	@Inject
 	private SqlSessionTemplate sql;
-
-	//회원가입
-	@Override
-	public int register(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return sql.insert("member.register",vo);
-	}
 	
 	//조회
 	@Override
@@ -40,6 +33,12 @@ public class MemberDAOImpl implements MemberDAO{
 	public int MemberDelete(String id) {
 		// TODO Auto-generated method stub
 		return sql.delete("member.deletemember", id);
+	}
+
+	//회원가입
+	@Override
+	public int join(MemberVO member) {
+		return sql.insert("member.join", member);
 	}
 
 

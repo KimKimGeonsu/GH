@@ -85,7 +85,8 @@
             <div class="slider-area">
                 <div class="slider-active owl-carousel">
                     <div class="single-slider slider-1 gray-bg">
-                        <div class="container">
+                        <div class="container"> 
+                        	                   
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="slider-content slider-animated-1">
@@ -124,6 +125,9 @@
             </div>
             <div class="banner-area hm1-banner pt-130 pb-107">
                 <div class="container">
+                	<div class="section-title text-center mb-20 main-best">
+	                        	<h2>Best</h2>
+	                </div>    
                     <div class="row">
                         <div class="col-md-12 col-lg-4">
                             <div class="banner-wrapper banner-border ml-10 mb-30">
@@ -1218,43 +1222,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="dealy-of-product-area gray-bg dealy-mrg">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-12">
-                            <div class="dealy-product-img wow fadeInLeft">
-                                <img src="assets/img/banner/1.png" alt="image">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-12 dealy-product-content-center">
-                            <div class="dealy-product-content">
-                                <h3><a href="#">Rattan Rocking Cradle</a></h3>
-                                <div class="dealy-rating">
-                                    <i class="ion-ios-star"></i>
-                                    <i class="ion-ios-star"></i>
-                                    <i class="ion-ios-star"></i>
-                                    <i class="ion-ios-star"></i>
-                                    <i class="ion-ios-star"></i>
-                                </div>
-                                <div class="dealy-price">
-                                    <span class="old">$20.00</span>
-                                    <span>$15.00</span>
-                                </div>
-                                <div class="timer">
-                                    <div data-countdown="2018/06/01"></div>
-                                </div>
-                                <a href="#" class="btn-style cr-btn"><span>shop now</span></a>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-12">
-                            <div class="dealy-product-img wow fadeInRight f-right">
-                                <img src="assets/img/banner/2.png" alt="image">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>            
             <div class="blog-area pt-125 pb-85 blog-padding hm-blog">
                 <div class="container-fluid">
                     <div class="section-title text-center mb-60">
