@@ -94,7 +94,7 @@
                                                 </li>
                                                 <!-- <li><a href="contact.html">contact us</a></li> -->                                                                                               
                                                  <c:if test="${sessionScope.admin eq 'admin' }">												
-												<li><a href="#">관리자모드</a>
+												<li><a href="shopList.admin">관리자모드</a>
                                                 <ul>
                                                     <li><a href="shopAdd.admin">상품등록</a></li>
                                                     <li><a href="shopList.admin">상품리스트</a></li>
