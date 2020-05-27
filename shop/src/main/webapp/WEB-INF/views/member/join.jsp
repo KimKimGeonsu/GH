@@ -10,41 +10,45 @@
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="js/joinjs.js" charset="utf-8"></script>
 <!-- 유효성검사  -->
-<script src="js/address.js"></script>
+<script src="assets/js/address.js"></script>
 <!-- 우편번호 검색 -->
 <script>
 //체크빡스 체크용
-function oneCheckbox(a){
-    var obj = document.getElementsByName("who");
-    for(var i=0; i<obj.length; i++){
-        if(obj[i] != a){
-            obj[i].checked = false;
-        }
-    }
-}
+$(function(){
+	$('#joinform').submit(function(){
+		var birth = $('#year').val() + "-" + $('#month').val() + "-" + $('#day').val();
+		$('#USER_BIRTH').val(birth);
+		
+		var email = $('#email').val() + "@" + $('#domain').val();
+		$('#USER_EMAIL').val(email);
+	})
+})
 </script>
 <style>
 	body{font-family:'Rubik', sans-serif;}	
 </style>
 </head>
 <body>
-
 <div class="out_container">
 	<div class="join_line">
 	<form method="post" action="joinAction" id="joinform">
+		<!-- birth, email val -->
+		<input type="hidden" id="USER_BIRTH" name="USER_BIRTH">
+		<input type="hidden" id="USER_EMAIL" name="USER_EMAIL">
+	
 		<fieldset class="HY_legend">
 			<legend><a href="/GH" class="HY_a"><img src="assets/img/logo/logo.png"></a></legend>
 				<label class="HY_label" for="id">ID</label><br>
-				<input class="HY_input" type="text" placeholder="ID" size="10" maxLength="10" name="id" id="id" autocomplete="off">
+				<input class="HY_input" type="text" placeholder="ID" size="10" maxLength="10" name="USER_ID" id="id" autocomplete="off">
 				<!-- <input class="HY_input" type="button" value="ID중복검사" id="idcheck"> --><br>
 				<span class="HY_span idMessage"></span>
 				
 				<label class="HY_label" for="pass">Password</label><br>
-				<input class="HY_input" type="password" placeholder="Password" maxLength="20" name="pass" id="pass"><br>
+				<input class="HY_input" type="password" placeholder="Password" maxLength="20" name="USER_PASS" id="pass"><br>
 				<span class="HY_span passMessage"></span>
 				
 				<label class="HY_label" for="name">Name</label><br>
-				<input class="HY_input" type="text" placeholder="Name" maxLength="10" name="name" id="name" autocomplete="off"><br>
+				<input class="HY_input" type="text" placeholder="Name" maxLength="10" name="USER_NAME" id="name" autocomplete="off"><br>
 				<span class="HY_span nameMessage"></span>
 				
 				<label for="" class="HY_label">생년월일</label><br>
@@ -74,15 +78,6 @@ function oneCheckbox(a){
 						placeholder="주민번호 뒷자리"><br> -->
 				<!-- 생년월일 -->
 				
-				<label class="HY_label">성별</label><br>
-				<select name="gender" id="gender">
-					<option value="">성별을 선택하세요</optaion>
-					<option value="M">남자</option>
-					<option value="F">여자</option>
-				</select>
-				<span class="HY_span genderMessage"></span><br>
-				<!-- 성별 -->
-				
 				<label class="HY_label">E-mail</label><br>
 				<input class="HY_input" type="text" name="email" id="email" maxlength="20"> @
 				<input class="HY_input" type="text" name="domain" id="domain">
@@ -96,24 +91,20 @@ function oneCheckbox(a){
 				<!-- E-mail -->
 				
 				<label class="HY_label">우편번호</label><br>
-				<input class="HY_input" type="text" name="post1" id="post1" readonly>
+				<input class="HY_input" type="text" name="USER_POSTCODE" id="post1" readonly>
 				<input class="HY_input" id="postbtn" type="button" value="우편검색" onclick="Postcode()"><br>
 				<span class="HY_span postMessage"></span>
 				<!-- 우편번호 -->
 				
 				<label class="HY_label">주소</label><br>
-				<input class="HY_input" type="text" name="address" id="address" readonly><br>
+				<input class="HY_input" type="text" name="USER_ADDRESS" id="address" readonly><br>
 				<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 				<span class="HY_span addressMessage"></span>
 				<!-- 주소 -->
 				
 				<label class="HY_label">휴대폰 번호</label><br>
-				<input class="HY_input" type="text" maxLength="11" name="phone" id="phone" placeholder="- 없이 숫자만 입력" autocomplete="off"><br>
-				<span class="HY_span phoneMessage"></span>
-				
-				<label class="HY_label">닉네임</label><br>
-				<input class="HY_input" type="text" maxLength="10" name="nickname" id="nickname" placeholder="NickName" autocomplete="off"><br>
-				<span class="HY_span nickMessage"></span>
+				<input class="HY_input" type="text" maxLength="11" name="USER_PHONE" id="phone" placeholder="- 없이 숫자만 입력" autocomplete="off"><br>
+				<span class="HY_span phoneMessage"></span>				
 				
 				<button class="HY_button" id="submit_btn" type="submit" value="회원가입">회원가입</button>
 				<button class="HY_button" type="button" value="취소" onClick="history.go(-1)">취소</button>	

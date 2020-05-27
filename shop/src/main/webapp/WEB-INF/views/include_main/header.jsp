@@ -6,10 +6,23 @@
             <style>
             	.header-site-icon{padding-top:22px;}
             	.login-join{margin-top:21px; text-align:right; color:gray;}
+            	.lg-btn{font-size:13px;}
             	.lg-btn:hover{opacity:0.5; transition:.3s;}
             	.header-cart button span{background-color:black;}
             	.login-register-tab-list.nav a.active h4{color:silver;}
             	.login-form button{background-color:black} 	
+            	.main-menu ul li{padding:0 13px;}
+            	.main-menu ul li:hover > a,
+            	.banner-content-style2 h2 > span,
+            	.product-tab-list a.active h4,
+            	.slider-content h2 span{color:#389bb1;}
+            	
+            	.banner-border::before{border:1px solid #389bb1;}
+            	.banner-border-2::before{border:1px solid #389bb1;}
+            	#scrollUp{background:#389bb1 none repeat scroll 0 0}
+            	.main-best{margin-bottom:35px;}
+            	.main-menu nav ul li ul > li > a::before{background:#389bb1 none repeat scroll 0 0;}
+            	.same-style button:hover, .same-style a:hover{color:#389bb1;}
             </style>
             <!-- header start -->
             <header>
@@ -98,7 +111,6 @@
                                                 <ul>
                                                     <li><a href="shopAdd.admin">상품등록</a></li>
                                                     <li><a href="shopList.admin">상품리스트</a></li>
-                                                    <li><a href="index-3.html">home version 3</a></li>
                                                     <li><a href="selectAll.admin">회원관리</a></li>
                                                 </ul>
                                             </li>                                         
@@ -116,7 +128,13 @@
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-7 col-7">
                             	<div class="login-join">
-                            		<a href="login" class="lg-btn">로그인</a> / <a href="join" class="lg-btn">회원가입</a>
+                            		<c:if test="${empty id}">
+                            			<a href="login" class="lg-btn">로그인</a> / <a href="join" class="lg-btn">회원가입</a>
+                            		</c:if>
+                            		<c:if test="${!empty id}">
+                            			<span>${id}님 환영합니다.</span>
+                            			<a href="#">로그아웃</a>
+                            		</c:if>
                             	</div>
                                 <div class="header-site-icon">
                                     <div class="header-search same-style">

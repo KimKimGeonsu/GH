@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
@@ -59,17 +60,22 @@ public class MemberController {
 //
 //	}
 //	
+	
+	//회원가입 페이지 이동
 	@RequestMapping(value = "/join" , method = RequestMethod.GET)
 	public String join() {
 		return "member/join";
 	}
 	
+	//회원가입
 	@RequestMapping(value = "/joinAction" , method = RequestMethod.POST)
 	public void joinAction(MemberVO member, HttpServletResponse response) throws Exception{
-		int result = memberservice.join(member);
 		
+		//비밀번호 암호화
 		member.setUSER_PASS(bc.encode(member.getUSER_PASS()));
 		System.out.println(member.getUSER_PASS());
+		
+		int result = memberservice.join(member);
 		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();	
@@ -84,5 +90,18 @@ public class MemberController {
 		}
 		out.println("</script>");
 		out.close();
+	}
+	
+	//로그인
+	@RequestMapping(value = "login" , method = RequestMethod.POST)
+	public String login(
+						String USER_ID, String USER_PASS,
+						HttpSession session,
+						HttpServletResponse response
+						)throws Exception {
+		
+		//int result = memberservice.isId(USER_ID, USER_PASS);
+		
+		return null;
 	}
 }
