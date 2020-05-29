@@ -5,21 +5,29 @@
 
 	<!-- 등록 -->
 	<insert id="shopInsert">
-	insert into product_tbl values((SELECT NVL(MAX(PD_NO),0)+1 FROM PRODUCT_TBL),
-	#{PD_NAME},#{PD_CATEGORY_NO},#{PD_PRICE},#{PD_IMG},#{PD_QUANTITY},#{PD_INFO},0,sysdate)
+		insert into product_tbl values((SELECT NVL(MAX(PD_NO),0)+1 FROM
+		PRODUCT_TBL),
+		#{PD_NAME},#{PD_CATEGORY_NO},#{PD_PRICE},#{PD_IMG},#{PD_QUANTITY},#{PD_INFO},0,sysdate)
 	</insert>
-	
+
 	<!-- 카테고리 -->
 	<select id="cate" resultType="shop" parameterType="int">
-	select * from  sub_category_tbl where SC_NO_REF=#{cate}
+		<choose>
+			<when test="value gt 1">
+				select * from sub_category_tbl where SC_NO_REF=#{cate}
+			</when>
+			<otherwise>
+				select * from CATEGORY_TBL
+			</otherwise>
+		</choose>
 	</select>
 
 	<!-- 조회 -->
 	<select id="shopList" resultType="shop">
-	select * from product_tbl
+		select * from product_tbl
 	</select>
-	
-	
-	
+
+
+
 
 </mapper>
