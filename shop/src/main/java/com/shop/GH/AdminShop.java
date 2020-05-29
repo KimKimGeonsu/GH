@@ -40,7 +40,8 @@ import sun.print.resources.serviceui;
  * @author 김건수
  * @관리자 상품컨트롤러
  *
- */
+ */  
+//das
 @Controller
 public class AdminShop {
 
