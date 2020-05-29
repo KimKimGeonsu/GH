@@ -10,7 +10,9 @@ import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -55,9 +57,28 @@ public class AdminShop {
 	// 상품목록
 	@RequestMapping(value = "shopList.admin", method = RequestMethod.GET)
 	public ModelAndView shopList(ModelAndView mv) {
-		List<ShopVO> list = shop.listShop();
-		return new ModelAndView("admin/shop/shopList", "list", list);
+		return new ModelAndView("admin/shop/shopList");
 	}
+	
+	//상품리스트
+	@RequestMapping(value = "ajaxlist.admin", method = RequestMethod.POST)
+	public ModelAndView ajaxList(ModelAndView mv) {
+		List<ShopVO> list = shop.listShop();
+		return new ModelAndView("admin/shop/list", "list", list);
+	}
+	
+	//카테고리
+	public ModelAndView ajaxcate(ModelAndView mv) {
+		List<ShopVO> list = shop.listShop();
+		return new ModelAndView("admin/shop/list", "list", list);
+	}
+	
+	
+	
+	
+	
+	
+	
 
 	// 상품등록
 	@RequestMapping(value = "shopAdd.admin", method = RequestMethod.GET)
@@ -97,12 +118,12 @@ public class AdminShop {
 		out.close();
 
 	}
-
+	
+	//등록카테고리
 	@ResponseBody
 	@RequestMapping(value = "cate.admin", method = RequestMethod.POST)
-	public List<ShopVO> cate(@RequestParam("cate") int cate) {
-		List<ShopVO> list = shop.cate(cate);
-		return list;
+	public List<ShopVO> cate(@RequestParam("cate") int cate) {				
+		return shop.cate(cate);
 	}
 
 	/**

@@ -21,24 +21,39 @@
 					</div>
 					<div class="inputArea">
 						<label>1차 분류</label> <select class="category1" name="PD_CATEGORY_NO" id="PD_CATEGORY_NO">
-							<option value="">전체</option>
-							<option value="100">상의</option>
-							<option value="100">하의</option>
 						</select> 
 					 <label>2차 분류</label> <select class="category2" name="cateCode" id="cate2">
 							<!-- <option value="">전체</option> -->
 						</select>
 					</div>
 						<script type="text/javascript">
-					$("#PD_CATEGORY_NO").change(function() {
-						$("#cate2").empty();						
+						
+						$.ajax({
+							url:"cate.admin",
+							type:"POST",
+							data:{cate: "1"},
+							dataType:"json",														
+							success:function(result){
+								console.log(result);						
+								 $.each(result,function(index,item){
+									 $("#PD_CATEGORY_NO").append("<option value="+item.c_NO+">"+item.c_NAME+"</option>");
+								 });																					
+								
+							},error:function(){
+								alert('1차분류 오류');
+							}
+						}); 
+						
+					$("#PD_CATEGORY_NO").change(function() {					
+						$("#cate2").empty();	
+						console.log($("#PD_CATEGORY_NO option:selected").val());
 						 $.ajax({
 							url:"cate.admin",
 							type:"POST",
 							data:{cate: $("#PD_CATEGORY_NO option:selected").val()},
 							dataType:"json",														
 							success:function(result){
-								console.log(result);						
+								console.log('dddd'+result);
 								 $.each(result,function(index,item){
 									 $("#cate2").append("<option value="+$(this).text()+">"+item.sc_NAME+"</option>");
 								 });																					

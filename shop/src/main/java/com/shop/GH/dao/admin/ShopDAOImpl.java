@@ -1,6 +1,7 @@
 package com.shop.GH.dao.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
