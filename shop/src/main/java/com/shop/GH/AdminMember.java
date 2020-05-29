@@ -32,7 +32,7 @@ import com.shop.GH.vo.admin.ShopVO;
  */
 @Controller
 public class AdminMember {
-	
+	//123
 	@Inject
 	private MemberService m_service;
 	

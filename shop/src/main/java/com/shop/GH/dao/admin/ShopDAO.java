@@ -10,6 +10,8 @@ public interface ShopDAO {
 	
 	public List<ShopVO> listShop();
 	
+	public List<ShopVO> cate(int cate);
+	
 	
 
 }

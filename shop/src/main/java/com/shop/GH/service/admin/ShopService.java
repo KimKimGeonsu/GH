@@ -9,5 +9,7 @@ public interface ShopService {
 	public int insertShop(ShopVO vo);
 	
 	public List<ShopVO> listShop();
+	
+	public List<ShopVO> cate(int cate);
 
 }

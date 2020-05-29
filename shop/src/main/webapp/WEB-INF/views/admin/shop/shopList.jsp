@@ -6,11 +6,46 @@
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 <jsp:include page="../../include_main/header_css.jsp" />
+<head>
+<style type="text/css">
+ .list-group {
+     
+     margin:auto;
+     float:left;
+     padding-top:20px;
+    }
+    .lead {
+     
+     margin:auto;
+     left:0;
+     right:0;
+     padding-top:10%;
+    }
+    
+</style>
+<script type="text/javascript">
+$(document).ready(function() {
+	  $('.list-group-item').click(function(e) {
+	    //e.preventDefault();
+	    $('.list-group-item').removeClass('active');
+	    $(this).addClass('active');
+	  });
+	});
+</script>
+</head>
 <body>
 
 	<div class="wrapper">
 		<jsp:include page="../../include_main/header.jsp" />
 		<div class="banner-area hm1-banner pt-130 pb-107"><!-- divnanner -->
+			<div class="list-group">			   
+			    <a href="shopAdd.admin" class="list-group-item active"><i class="fa fa-key"></i> <span>상품등록</span></a>
+			    <a href="shopList.admin" class="list-group-item"><i class="fa fa-credit-card"></i> <span>상품리스트</span></a>
+			    <a href="#" class="list-group-item"><i class="fa fa-question-circle"></i> <span>Support</span></a>
+			    <a href="#" class="list-group-item"><i class="fa fa-arrow-circle-o-left"></i> <span>Sandbox Account</span></a>
+			    <a href="#" class="list-group-item"><i class="fa fa-book"></i> <span>QuickStart Overview</span></a>
+			    <a href="selectAll.admin" class="list-group-item"><i class="fa fa-compass"></i> <span>회원관리</span></a>						
+			  </div>
 			<table border="1">
 		<tr>
 			<th>상품ID</th>
@@ -28,8 +63,7 @@
 					<img src="shopImg/${row.PD_IMG}" width="120ox" height="110px">
 				</a>
 			</td>
-			<td align="center">
-				${row.PD_NAME }
+			<td align="center"><a href="shop.admin/${row.PD_NO}">${row.PD_NAME }</a>				
 			</td>
 			<td>
 				<fmt:formatNumber value="${row.PD_PRICE}" pattern="###,###,###"/>

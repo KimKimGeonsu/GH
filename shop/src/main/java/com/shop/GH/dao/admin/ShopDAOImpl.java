@@ -30,5 +30,12 @@ public class ShopDAOImpl implements ShopDAO{
 		// TODO Auto-generated method stub
 		return sql.insert("shopAdmin.shopInsert",vo);
 	}
+	
+	//카테고리
+	@Override
+	public List<ShopVO> cate(int cate) {
+		// TODO Auto-generated method stub
+		return sql.selectList("shopAdmin.cate",cate);
+	}
 
 }
