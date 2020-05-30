@@ -17,12 +17,12 @@
 				
 				<div class="inputArea">
 						<label for="gdsImg">대표이미지</label> <input type="file" id="MAIN_IMG"
-							name="MAIN_IMG" />
+							name="MAIN_IMG" accept="image/gif,image/jpeg,image/png" onchange="fileTypeCheck(this)"/>
 					</div>
 					<div class="inputArea">
 						<label>1차 분류</label> <select class="category1" name="PD_CATEGORY_NO" id="PD_CATEGORY_NO">
 						</select> 
-					 <label>2차 분류</label> <select class="category2" name="cateCode" id="cate2">
+					 <label>2차 분류</label> <select class="category2" name="PD_SUB_CATEGORY_NO" id="PD_SUB_CATEGORY_NO">
 							<!-- <option value="">전체</option> -->
 						</select>
 					</div>
@@ -34,28 +34,26 @@
 							data:{cate: "1"},
 							dataType:"json",														
 							success:function(result){
-								console.log(result);						
+								$("#PD_CATEGORY_NO").append("<option value=''>대분류</option>");
 								 $.each(result,function(index,item){
 									 $("#PD_CATEGORY_NO").append("<option value="+item.c_NO+">"+item.c_NAME+"</option>");
-								 });																					
-								
+								 });																													
 							},error:function(){
 								alert('1차분류 오류');
 							}
 						}); 
 						
 					$("#PD_CATEGORY_NO").change(function() {					
-						$("#cate2").empty();	
+						$("#PD_SUB_CATEGORY_NO").empty();	
 						console.log($("#PD_CATEGORY_NO option:selected").val());
 						 $.ajax({
 							url:"cate.admin",
 							type:"POST",
 							data:{cate: $("#PD_CATEGORY_NO option:selected").val()},
 							dataType:"json",														
-							success:function(result){
-								console.log('dddd'+result);
+							success:function(result){									
 								 $.each(result,function(index,item){
-									 $("#cate2").append("<option value="+$(this).text()+">"+item.sc_NAME+"</option>");
+									 $("#PD_SUB_CATEGORY_NO").append("<option value="+item.sc_NO+">"+item.sc_NAME+"</option>");
 								 });																					
 								
 							},error:function(){
@@ -63,6 +61,19 @@
 							}
 						}); 
 					});
+					//유효성
+					function fileTypeCheck(obj) {									
+										pathpoint = obj.value.lastIndexOf('.');									
+										filepoint = obj.value.substring(pathpoint+1,obj.length);									
+										filetype = filepoint.toLowerCase();									
+										if(filetype=='jpg' || filetype=='gif' || filetype=='png' || filetype=='jpeg' || filetype=='bmp') {																										
+										} else {									
+											alert('이미지파일만 업로드가 가능합니다');									
+											$("#MAIN_IMG").val("");								
+											return false;			
+										}
+									
+									}	
 					</script>
 
 					<div class="inputArea">

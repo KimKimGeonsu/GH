@@ -36,4 +36,11 @@ public class ShopServiceImpl implements ShopService {
 		return dao.cate(cate);
 	}
 
+	//카테고리 리스트클릭시
+	@Override
+	public List<ShopVO> cateshop(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return dao.cateshop(map);
+	}
+
 }

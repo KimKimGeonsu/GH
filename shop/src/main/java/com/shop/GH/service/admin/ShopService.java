@@ -13,4 +13,5 @@ public interface ShopService {
 	
 	public List<ShopVO> cate(int cate);
 
+	public List<ShopVO> cateshop(Map<String, Object> map);
 }
