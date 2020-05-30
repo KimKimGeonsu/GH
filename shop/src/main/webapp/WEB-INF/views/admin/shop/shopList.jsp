@@ -24,6 +24,31 @@
     
 </style>
 <script type="text/javascript">
+function ajaxlist(){
+					var tall = [];  
+					
+				    $('input[name="tall"]:checked').each(function(i){
+				    	tall.push($(this).val());
+				    	});
+				    console.log(tall);
+					var small =[];
+					
+					 $('input[name="small"]:checked').each(function(i){
+						 small.push($(this).val());
+									 });
+					 
+					  $.ajax({
+							url:"ajaxlist.admin",
+							type:"POST",
+							data:{"tall":tall,"small":small},
+							dataType:"html",														
+							success:function(result){																												
+								$("#ajaxpage").append(result);
+							},error:function(){
+								
+							}});//ajax 
+				}
+
 $(document).ready(function() {
 	  $('.list-group-item').click(function(e) {
 	    //e.preventDefault();
@@ -31,27 +56,60 @@ $(document).ready(function() {
 	    $(this).addClass('active');
 	  });
 	  
-	 $.ajax({
+	  ajaxlist();
+	  
+	  
+	  
+	  //상품리스트
+	 /* $.ajax({
 				url:"ajaxlist.admin",
 				type:"POST",
 				data:{},
 				dataType:"html",														
-				success:function(result){
-																										
-					console.log(result);
+				success:function(result){																												
 					$("#ajaxpage").append(result);
 				},error:function(){
 					
 				}
-			}); 
+			});  */
 	 
 	 
 	 
-	 //버튼
-		$("#selectcate").find($("label>input[type=checkbox]")).click(function() {
-			console.log($(this).val());
+	 //체크박스 에이잭스
+	$("#selectcate").find($("label>input[type=checkbox]")).click(function() {			
+			//console.log($("label>input[type=checkbox]:checked").val()); --체크확인			
+			
+			$("#ajaxpage").empty();			
+			 ajaxlist();
 		});
 
+		
+		
+		
+	 
+	 //삭제함수 --컨트롤러만들어야함 체크박스 선택은 고려
+	 function shopdelete(pd_no) {
+		 if(confirm(pd_no+"를 삭제하시겠습니까?")){
+			    $.ajax({
+			        type: "GET",
+			        url:"shopdelete.admin",
+			        data:{pd_no: pd_no},
+			        success : function(result){
+			            if(result==1){
+			                alert('로케이션성공하였습니다');
+			                location.href = "selectAll.admin";
+			            }else{
+			                alert('실패했습니다');
+			            }},
+			        error : function(){
+			            alert('실패');
+			        }
+			    });
+			} else {
+			    return false;
+			}
+		 };
+	
 	 
 	 
 	  
@@ -73,78 +131,76 @@ $(document).ready(function() {
 			<div class="list-group">			   
 			    <a href="shopList.admin" class="list-group-item active"><i class="fa fa-key"></i> <span>상픔리스트</span></a>
 			    <a href="shopAdd.admin" class="list-group-item"><i class="fa fa-credit-card"></i> <span>상품등록</span></a>
-			    <a href="#" class="list-group-item"><i class="fa fa-question-circle"></i> <span>Support</span></a>
-			    <a href="#" class="list-group-item"><i class="fa fa-arrow-circle-o-left"></i> <span>Sandbox Account</span></a>
-			    <a href="#" class="list-group-item"><i class="fa fa-book"></i> <span>QuickStart Overview</span></a>
+			    <a href="#" class="list-group-item"><i class="fa fa-question-circle"></i> <span>주문배송</span></a>
+			    <a href="#" class="list-group-item"><i class="fa fa-arrow-circle-o-left"></i> <span></span></a>
+			    <a href="#" class="list-group-item"><i class="fa fa-book"></i> <span>공지,질문답변</span></a>
 			    <a href="selectAll.admin" class="list-group-item"><i class="fa fa-compass"></i> <span>회원관리</span></a>						
 			  </div>
-			  <div>
-			  <button id="buttt">뭔데</button>
-			  </div>
+
 
 			  
 			  <div id="selectcate" class="container">
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="100">상의
+				  <input type="checkbox" id="100" name="tall" value="100">상의
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="200">하의
+				  <input type="checkbox" id="200" name="tall" value="200">하의
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="300">겉옷
+				  <input type="checkbox" id="300" name="tall" value="300">겉옷
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="400">신발
+				  <input type="checkbox" id="400" name="tall" value="400">신발
 				</label>				
 				<br>
 				
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="101">반팔
+				  <input type="checkbox" id="101" name="small" value="101">반팔
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="102">긴팔
+				  <input type="checkbox" id="102" name="small" value="102">긴팔
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="103">맨투맨/후드
+				  <input type="checkbox" id="103" name="small" value="103">맨투맨/후드
 				</label>
 				<br>
 								
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="301">자켓
+				  <input type="checkbox" id="301" name="small" value="301">자켓
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="302">코트/블레이저
+				  <input type="checkbox" id="302" name="small" value="302">코트/블레이저
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="303">가디건/조끼
+				  <input type="checkbox" id="303" name="small" value="303">가디건/조끼
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="304">패딩
-				</label>
-				<br>
-				
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="201">반바지
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="202">슬랙스
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="203">청바지
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="204">면바지
+				  <input type="checkbox" id="304" name="small" value="304">패딩
 				</label>
 				<br>
 				
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="401">운동화/스니커즈
+				  <input type="checkbox" id="201" name="small" value="201">반바지
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="402">구두/로퍼
+				  <input type="checkbox" id="202" name="small" value="202">슬랙스
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="inlineCheckbox3" value="403">샌들/슬리퍼
+				  <input type="checkbox" id="203" name="small" value="203">청바지
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="204" name="small" value="204">면바지
+				</label>
+				<br>
+				
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="401" name="small" value="401">운동화/스니커즈
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="402" name="small" value="402">구두/로퍼
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="403" name="small" value="403">샌들/슬리퍼
 				</label>				
 				<br>
 				
