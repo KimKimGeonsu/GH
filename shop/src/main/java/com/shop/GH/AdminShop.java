@@ -10,7 +10,9 @@ import java.io.PrintWriter;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -39,7 +41,7 @@ import sun.print.resources.serviceui;
  * @관리자 상품컨트롤러
  *
  */  
-//das
+
 @Controller
 public class AdminShop {
 
@@ -55,11 +57,26 @@ public class AdminShop {
 	// 상품목록
 	@RequestMapping(value = "shopList.admin", method = RequestMethod.GET)
 	public ModelAndView shopList(ModelAndView mv) {
-		List<ShopVO> list = shop.listShop();
-		return new ModelAndView("admin/shop/shopList", "list", list);
+		return new ModelAndView("admin/shop/shopList");
 	}
+	
+	//소분류만 클릭시 오류 + 키워드처리 + 유효성 + 페이징처리,상품리스트   
+	@RequestMapping(value = "ajaxlist.admin", method = RequestMethod.POST)
+	public ModelAndView ajaxList(ModelAndView mv,ShopVO vo,@RequestParam(value="tall[]", required = false) List<Integer> tall,@RequestParam(value="small[]", required = false) List<Integer> small) {
+		Map<String, Object> map = new HashMap<String, Object>();		
+		map.put("tall", tall);
+		map.put("small", small);		
+		List<ShopVO> list = new ArrayList<ShopVO>();		
+		if(tall==null && small==null) {
+			list= shop.listShop();
+			}else {				
+			list = shop.cateshop(map);
+			}		
+		return new ModelAndView("admin/shop/list", "list", list);
+	}
+		
 
-	// 상품등록
+	// 상품등록 ------유효성 이미지만했음 나머지들도 해야됨
 	@RequestMapping(value = "shopAdd.admin", method = RequestMethod.GET)
 	public String shopAdd() {
 		return "admin/shop/shopAdd";
@@ -68,8 +85,8 @@ public class AdminShop {
 	// 상품등록 하기
 	@RequestMapping(value = "shopAdd.admin", method = RequestMethod.POST)
 	public void shopAdd2(ShopVO vo, HttpServletResponse response, MultipartHttpServletRequest mtf,
-			HttpServletRequest request) throws IllegalStateException, IOException {
-
+			HttpServletRequest request) throws IllegalStateException, IOException {	
+		
 		String filePath = request.getSession().getServletContext().getRealPath("resources/shopImage/");
 		UUID uid = UUID.randomUUID();
 		MultipartFile file = mtf.getFile("MAIN_IMG");
@@ -97,12 +114,12 @@ public class AdminShop {
 		out.close();
 
 	}
-
+	
+	//등록카테고리
 	@ResponseBody
 	@RequestMapping(value = "cate.admin", method = RequestMethod.POST)
-	public List<ShopVO> cate(@RequestParam("cate") int cate) {
-		List<ShopVO> list = shop.cate(cate);
-		return list;
+	public List<ShopVO> cate(@RequestParam("cate") int cate) {				
+		return shop.cate(cate);
 	}
 
 	/**

@@ -1,6 +1,7 @@
 package com.shop.GH.dao.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -36,6 +37,13 @@ public class ShopDAOImpl implements ShopDAO{
 	public List<ShopVO> cate(int cate) {
 		// TODO Auto-generated method stub
 		return sql.selectList("shopAdmin.cate",cate);
+	}
+	
+	//카테고리리스트 클릭시
+	@Override
+	public List<ShopVO> cateshop(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return sql.selectList("shopAdmin.catesel",map);
 	}
 
 }

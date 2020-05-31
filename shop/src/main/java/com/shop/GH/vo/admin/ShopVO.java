@@ -13,13 +13,13 @@ public class ShopVO {
 	private int PD_NO;
 	private String PD_NAME;
 	private int PD_CATEGORY_NO;
+	private int PD_SUB_CATEGORY_NO;
 	private int PD_PRICE;
 	private String PD_IMG;
 	private int PD_QUANTITY;
 	private String PD_INFO;
 	private int PD_READCOUNT;
 	private Date PD_REGDATE;
-	
 	public int getC_NO() {
 		return C_NO;
 	}
@@ -68,6 +68,12 @@ public class ShopVO {
 	public void setPD_CATEGORY_NO(int pD_CATEGORY_NO) {
 		PD_CATEGORY_NO = pD_CATEGORY_NO;
 	}
+	public int getPD_SUB_CATEGORY_NO() {
+		return PD_SUB_CATEGORY_NO;
+	}
+	public void setPD_SUB_CATEGORY_NO(int pD_SUB_CATEGORY_NO) {
+		PD_SUB_CATEGORY_NO = pD_SUB_CATEGORY_NO;
+	}
 	public int getPD_PRICE() {
 		return PD_PRICE;
 	}
@@ -109,12 +115,12 @@ public class ShopVO {
 	public String toString() {
 		return "ShopVO [C_NO=" + C_NO + ", C_NAME=" + C_NAME + ", SC_NO=" + SC_NO + ", SC_NAME=" + SC_NAME
 				+ ", SC_NO_REF=" + SC_NO_REF + ", PD_NO=" + PD_NO + ", PD_NAME=" + PD_NAME + ", PD_CATEGORY_NO="
-				+ PD_CATEGORY_NO + ", PD_PRICE=" + PD_PRICE + ", PD_IMG=" + PD_IMG + ", PD_QUANTITY=" + PD_QUANTITY
-				+ ", PD_INFO=" + PD_INFO + ", PD_READCOUNT=" + PD_READCOUNT + ", PD_REGDATE=" + PD_REGDATE + "]";
+				+ PD_CATEGORY_NO + ", PD_SUB_CATEGORY_NO=" + PD_SUB_CATEGORY_NO + ", PD_PRICE=" + PD_PRICE + ", PD_IMG="
+				+ PD_IMG + ", PD_QUANTITY=" + PD_QUANTITY + ", PD_INFO=" + PD_INFO + ", PD_READCOUNT=" + PD_READCOUNT
+				+ ", PD_REGDATE=" + PD_REGDATE + "]";
 	}
 	
 	
-
 
 }
 
