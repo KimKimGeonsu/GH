@@ -13,6 +13,11 @@
 		)
 	</insert>
 	
+	<!-- 아이디 확인 -->
+	<select id="isId" resultType="member" parameterType="String">
+		select * from user_tbl where user_id = #{user_ID}
+	</select>
+	
 	<!-- 조회 -->
 	<select id="selectAll" resultType="member">
 	select userid,email,regdate from hs_member where checked=1
@@ -22,5 +27,5 @@
 	<delete id="deletemember" parameterType="String">
 	delete from hs_member where userid=#{id}
 	</delete>
-
+	
 </mapper>
