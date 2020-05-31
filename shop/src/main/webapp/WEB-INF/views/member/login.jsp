@@ -15,6 +15,7 @@
     </head>
     <style>
     	.join-btn{float:right;}
+    	.ptb-130{padding:100px 0;}
     </style>
     <body>
         <div class="wrapper">
@@ -48,13 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="banner-area hm-4-padding">
-                <div class="container-fluid">
-                    <div class="banner-img">
-                        <a href="#"><img src="assets/img/banner/16.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div>
+            
             <div class="login-register-area ptb-130 hm-3-padding">
                 <div class="container-fluid">
                     <div class="row">
@@ -72,7 +67,7 @@
                                     <div id="lg1" class="tab-pane active">
                                         <div class="login-form-container">
                                             <div class="login-form">
-                                                <form action="#" method="post">
+                                                <form action="loginProcess" method="post">
                                                     <input type="text" name="USER_ID" placeholder="Username">
                                                     <input type="password" name="USER_PASS" placeholder="Password">
                                                     <div class="button-box">
@@ -81,9 +76,7 @@
                                                             <label>Remember me</label>
                                                             <a href="#">Forgot Password?</a>
                                                         </div>
-                                                        <a a href="login">
-                                                        	<button type="submit" class="btn-style cr-btn"><span>Login</span></button>
-                                                        </a>
+                                                        <button type="submit" class="btn-style cr-btn"><span>Login</span></button>
                                                         <a href="join">
                                                         	<button type="button" class="btn-style cr-btn join-btn"><span>Join</span></button>
                                                         </a>

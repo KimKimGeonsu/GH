@@ -19,4 +19,7 @@ public interface MemberDAO {
 	
 	//회원가입
 	public int join(MemberVO member);
+	
+	//아이디 확인
+	public MemberVO isId(String user_ID);
 }

@@ -40,11 +40,11 @@ public class MemberDAOImpl implements MemberDAO{
 	public int join(MemberVO member) {
 		return sql.insert("member.join", member);
 	}
-
-
-
 	
+	//아이디 확인
+	@Override
+	public MemberVO isId(String user_ID) {
+		return sql.selectOne("member.isId", user_ID);
+	}	
 	
-
-
 }
