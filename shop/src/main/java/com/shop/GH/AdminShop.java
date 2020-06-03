@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeSet;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -22,7 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -34,14 +34,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.shop.GH.service.admin.ShopService;
 import com.shop.GH.vo.admin.ShopVO;
 
-import sun.print.resources.serviceui;
-
 /**
  * @author 김건수
  * @관리자 상품컨트롤러
  *
  */  
-
+//테스팅ㅇㅇㅇㅇ
 @Controller
 public class AdminShop {
 
@@ -60,20 +58,67 @@ public class AdminShop {
 		return new ModelAndView("admin/shop/shopList");
 	}
 	
-	//소분류만 클릭시 오류 + 키워드처리 + 유효성 + 페이징처리,상품리스트   
+	//키워드처리 + 유효성 + 페이징처리,상품리스트   
 	@RequestMapping(value = "ajaxlist.admin", method = RequestMethod.POST)
-	public ModelAndView ajaxList(ModelAndView mv,ShopVO vo,@RequestParam(value="tall[]", required = false) List<Integer> tall,@RequestParam(value="small[]", required = false) List<Integer> small) {
+	public ModelAndView ajaxList(ModelAndView mv,ShopVO vo,@RequestParam(value="tall[]", required = false) List<String> tall,@RequestParam(value="small[]", required = false) List<String> small,
+			@RequestParam(value = "keyword",required = false) String keyword,@RequestParam(value = "keysel",required = false) String keysel) {
+		System.out.println("키워드:" + keyword);
+		System.out.println("키셀:" + keysel);
+		System.out.println(tall);
+		System.out.println(small);
+		if((tall !=null || small !=null) || tall !=null || small != null) {
+		for(int i=0; i<tall.size();i++) {			
+			System.out.println("i 는 " + tall.get(i));
+			if(small != null) {
+			for(int j=0; j<small.size(); j++) {
+				System.out.println("반복문을위한 " + tall.get(i));
+			System.out.println("j는 " + small.get(j));
+			String a  = tall.get(i).substring(0, 2);
+			System.out.println("가른 문자열" + a);
+			if(tall.get(i).substring(0, 1).equals(small.get(j).substring(0,1))) {				
+				System.out.println("같다");
+				tall.remove(tall.get(i));
+
+				break; 
+			}			
+			//System.out.println(j);
+			}
+			}
+		}
+		if(tall.isEmpty())
+			tall=null;
+		}
+		System.out.println("대분류 "+tall);
+		System.out.println("소분류 "+small);
+
+		
+		
 		Map<String, Object> map = new HashMap<String, Object>();		
 		map.put("tall", tall);
-		map.put("small", small);		
-		List<ShopVO> list = new ArrayList<ShopVO>();		
-		if(tall==null && small==null) {
-			list= shop.listShop();
-			}else {				
-			list = shop.cateshop(map);
-			}		
-		return new ModelAndView("admin/shop/list", "list", list);
+		map.put("small", small);	
+		map.put("keyword", keyword);
+		map.put("key", keysel);
+		return new ModelAndView("admin/shop/list", "list", shop.listShop(map));
 	}
+	
+//	심심풀이용  
+//	@ResponseBody
+//	@RequestMapping(value = "ajaxlist2.admin", method = RequestMethod.GET)
+//	public Object ajaxList2(ModelAndView mv,ShopVO vo,@RequestParam(value="tall[]", required = false) List<Integer> tall,@RequestParam(value="small[]", required = false) List<Integer> small) {		
+//		AX ax = new AX();
+//		ax.setA("하이");
+//		ax.setAa("하이2");
+//		AB ab= new AB();
+//		ab.setAb("에이비");
+//		ab.setAbc("에비씨");
+//		ArrayList<AB> abc = new ArrayList<AB>();
+//		abc.add(ab);
+//		ax.setAb(abc);				
+//		
+//
+//		
+//		return ax;
+//	}
 		
 
 	// 상품등록 ------유효성 이미지만했음 나머지들도 해야됨
@@ -97,6 +142,7 @@ public class AdminShop {
 		vo.setPD_IMG(ymdPath + uid + "_" + file.getOriginalFilename());
 		if (new File(filePath + ymdPath).mkdirs()) {
 		}
+		System.out.println(filePath + ymdPath);
 		file.transferTo(new File(filePath + vo.getPD_IMG()));
 		int result = shop.insertShop(vo);
 		response.setContentType("text/html;charset=utf-8");

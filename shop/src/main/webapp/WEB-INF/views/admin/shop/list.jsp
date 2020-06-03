@@ -8,17 +8,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
-			<table border="1">
+<body>		
+				<br><br>
+				<div class="container"><button class="btn">삭제하기</button></div> 
+			<table class="table table-bordered" style="text-align: center;">
 		<tr>
+			<th><input type="checkbox"></th>
 			<th>상품ID</th>
 			<th>상품이미지</th>
-			<th>상품명</th>
+			<th>상품명(상세)</th>
 			<th>가격</th>
+			<th>수정</th>
 			<th>삭제</th>
 		</tr>
 		<c:forEach var="vo" items="${list}">
 		<tr>
+			<td><input type="checkbox"></td>
 			<td>
 				${vo.PD_NO}
 			</td>
@@ -33,6 +38,7 @@
 				<fmt:formatNumber value="${vo.PD_PRICE}" pattern="###,###,###"/>
 			</td>
 			<td align="center"><input type="button" value="삭제" style="color:black" class='btn' onclick="shopdelete('${vo.PD_NO}')"></td>
+			<td></td>
 		</tr>
 		</c:forEach>
 	</table>
