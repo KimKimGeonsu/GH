@@ -120,18 +120,6 @@ public class MemberController {
 		session.invalidate();
 		
 		return "redirect:login";
-	}
-		
-	//메뉴선택
-	@RequestMapping(value = "/cgAction", method = RequestMethod.GET)
-	public ModelAndView cgAction(ModelAndView mv,
-								 String category) {
-		
-		System.out.println("category : " + category);
-		
-		mv.setViewName("category/shop");
-		mv.addObject("category", category);
-		
-		return mv;
-	}
+	}		
+	
 }
