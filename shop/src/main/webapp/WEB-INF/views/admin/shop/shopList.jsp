@@ -233,6 +233,7 @@ $(document).ready(function() {
 
 	<div class="wrapper">
 		<jsp:include page="../../include_main/header.jsp" />
+		
 		<div class="banner-area hm1-banner pt-130 pb-107"><!-- divnanner -->
 			<div class="list-group">			   
 			    <a href="shopList.admin" class="list-group-item active"><i class="fa fa-key"></i> <span>상픔리스트</span></a>
@@ -243,7 +244,7 @@ $(document).ready(function() {
 			    <a href="selectAll.admin" class="list-group-item"><i class="fa fa-compass"></i> <span>회원관리</span></a>						
 			  </div>
 
-
+		<br><br><br><br><br>
 			<div id="ch-wrap">
 			  <div id="selectcate" class="container">
 				<label class="checkbox-inline">
