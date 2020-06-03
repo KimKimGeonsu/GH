@@ -1,11 +1,11 @@
             <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>            
-				
-            <h3><c:out value="${sessionScope.admin}"/></h3>
-            <h3><c:out value="${pageContext.request.contextPath}"/></h3>
+            <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+            
+            <%-- <h3><c:out value="${pageContext.request.contextPath}"/></h3> --%>
             <style>
             	.header-site-icon{padding-top:22px;}
-            	.login-join{margin-top:21px; text-align:right; color:gray;}
+            	.login-join{margin-top:17px; text-align:right; color:gray;}
+            	.login-join a:hover{opacity:0.7;}
             	.lg-btn{font-size:13px;}
             	.lg-btn:hover{opacity:0.5; transition:.3s;}
             	.header-cart button span{background-color:black;}
@@ -35,12 +35,6 @@
                                         <select class="select-header orderby">
                                             <option value="">ENGLISH</option>
                                             <option value="">BANGLA </option>
-                                         <c:if test="${sessionScope.admin eq 'admin' }">
-												<option value="">ADMIN</option>                                         
-                                         </c:if>    
-                                          <c:if test="${empty sessionScope.admin  }">                                        
-                                            <option value="">HINDI</option>
-                                            </c:if>
                                         </select>
                                     </div>
                                     <div class="currency">
@@ -66,7 +60,7 @@
                                     <div class="main-menu">
                                         <nav>
                                             <ul>
-                                                <li><a href="#">BEST</a>
+                                                <li><a href="cgAction?category=best">BEST</a>
                                                 </li>
                                                 <li><a href="#">TOP<i class="ion-ios-arrow-down"></i></a>
                                                     <ul>
@@ -105,22 +99,15 @@
                                                         <li><a href="#">리뷰</a></li>
                                                     </ul>
                                                 </li>
-                                                <!-- <li><a href="contact.html">contact us</a></li> -->                                                                                               
-                                                 <c:if test="${sessionScope.admin eq 'admin' }">												
+                                                <!-- <li><a href="contact.html">contact us</a></li> -->												
 												<li><a href="shopList.admin">관리자모드</a>
                                                 <ul>
                                                     <li><a href="shopAdd.admin">상품등록</a></li>
                                                     <li><a href="shopList.admin">상품리스트</a></li>
                                                     <li><a href="selectAll.admin">회원관리</a></li>
                                                 </ul>
-                                            </li>                                         
-                                         		</c:if>    
-                                          <c:if test="${empty sessionScope.admin  }">                                        
-                                            <li><a href="contact.html">contact us</a></li>
-                                            </c:if>
-                                                
-                                                
-                                                
+                                            </li>
+                                            
                                             </ul>
                                         </nav>
                                     </div>
@@ -132,8 +119,9 @@
                             			<a href="login" class="lg-btn">로그인</a> / <a href="join" class="lg-btn">회원가입</a>
                             		</c:if>
                             		<c:if test="${!empty id}">
-                            			<span>${id}님 환영합니다.</span>
-                            			<a href="#">로그아웃</a>
+                            			<span><b>${id}</b>님</span>
+                            			<br>
+                            			<a href="logout">로그아웃</a>
                             		</c:if>
                             	</div>
                                 <div class="header-site-icon">
