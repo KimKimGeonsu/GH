@@ -9,9 +9,11 @@ public interface ShopService {
 	
 	public int insertShop(ShopVO vo);
 	
-	public List<ShopVO> listShop();
+	public List<ShopVO> listShop(Map<String, Object> map);
 	
 	public List<ShopVO> cate(int cate);
 
-	public List<ShopVO> cateshop(Map<String, Object> map);
+
+	
+
 }

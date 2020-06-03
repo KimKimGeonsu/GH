@@ -30,19 +30,18 @@ function ajaxlist(){
 				    $('input[name="tall"]:checked').each(function(i){
 				    	tall.push($(this).val());
 				    	});
-				    console.log(tall);
+
 					var small =[];
 					
 					 $('input[name="small"]:checked').each(function(i){
 						 small.push($(this).val());
-									 });
-					 
+									 });																 					 					 
 					  $.ajax({
 							url:"ajaxlist.admin",
 							type:"POST",
 							data:{"tall":tall,"small":small},
 							dataType:"html",														
-							success:function(result){																												
+							success:function(result){										
 								$("#ajaxpage").append(result);
 							},error:function(){
 								
@@ -56,12 +55,43 @@ $(document).ready(function() {
 	    $(this).addClass('active');
 	  });
 	  
+	  
+	 //심심풀이용 
+	/*  $.ajax({
+			url:"ajaxlist2.admin",
+			type:"GET",
+			data:{},			
+			dataType:"JSON",
+			contentType: "application/json",														
+			success:function(result){										
+				console.log('asdasd'+JSON.stringify(result));
+				console.log(result)
+			},error:function(){
+				
+			}});//ajax 
+			
+			
+			 	
+			$.ajax({
+				url:"http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=aa66c5868406af2e316790e9ab3eadb7&targetDt=20200601",
+				type:"GET",
+				data:{},			
+				dataType:"JSON",				
+				success:function(result){										
+					console.log('asdasd'+JSON.stringify(result));
+					console.log(result)
+				},error:function(){
+					
+				}});//ajax  */
+	  
+	  
 	  ajaxlist();
+
 	  
 	  
 	  
 	  //상품리스트
-	 /* $.ajax({
+/* 	  $.ajax({
 				url:"ajaxlist.admin",
 				type:"POST",
 				data:{},
@@ -71,14 +101,53 @@ $(document).ready(function() {
 				},error:function(){
 					
 				}
-			});  */
-	 
+			});   */
+	
+			
+	$("#101,#102,#103,#201,#202,#203,#204,#301,#302,#303,#304,#401,#402,#403").click(function() {
+				 if($(this).val()<200){
+					 $("#100").prop("checked", true);
+				 }else if($(this).val()>200 && $(this).val()<300){
+					 $("#200").prop("checked", true);
+				 }else if($(this).val()>300 && $(this).val()<400){
+					 $("#300").prop("checked", true);
+				 }else if($(this).val()>400 && $(this).val()<500){
+					 $("#400").prop("checked", true);
+				 }
+				 
+			});
+	$("#keyword").keyup(function() {
+			var tall = [];  			
+		    $('input[name="tall"]:checked').each(function(i){
+		    	tall.push($(this).val());});
+	
+			var small =[];			
+			 $('input[name="small"]:checked').each(function(i){
+				 small.push($(this).val());});		
+		$.ajax({
+			url:"ajaxlist.admin",
+			type:"POST",
+			data:{"keyword":$("#keyword").val(),"keysel":$("#keysel").val(),"tall":tall,"small":small},
+			dataType:"html",														
+			success:function(result){
+				$("#ajaxpage").empty();
+				$("#ajaxpage").append(result);
+			},error:function(){
+				
+			}
+		}); 
+	})
+			
+
+
+			 
+			
+	
 	 
 	 
 	 //체크박스 에이잭스
 	$("#selectcate").find($("label>input[type=checkbox]")).click(function() {			
-			//console.log($("label>input[type=checkbox]:checked").val()); --체크확인			
-			
+			//console.log($("label>input[type=checkbox]:checked").val()); --체크확인						
 			$("#ajaxpage").empty();			
 			 ajaxlist();
 		});
@@ -109,7 +178,7 @@ $(document).ready(function() {
 			    return false;
 			}
 		 };
-	
+
 	 
 	 
 	  
@@ -203,15 +272,20 @@ $(document).ready(function() {
 				  <input type="checkbox" id="403" name="small" value="403">샌들/슬리퍼
 				</label>				
 				<br>
-				
+					<!-- keyword -->
+					<select name="keysel" id="keysel">					   
+					    <option value="PD_NO">상품번호</option>
+					    <option value="PD_NAME">상품명</option>					    
+					</select>
+				<input type="text" id="keyword" name="keyword" value="" placeholder="검색검색">
 				</div>
 				
 				
-			  
-			  <div id="ajaxpage"><!-- ajax -->
+			 
+			  <div id="ajaxpage" class="container"><!-- ajax -->
 	
 			</div>
-		
+	 
 		         
             </div><!-- divbannerEnd -->
 
