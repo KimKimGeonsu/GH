@@ -146,7 +146,7 @@ $(document).ready(function() {
 					 $("#100").prop("checked", true);
 				 }else if($(this).val()>200 && $(this).val()<300){
 					 $("#200").prop("checked", true);
-				 }else ifS($(this).val()>300 && $(this).val()<400){
+				 }else if ($(this).val()>300 && $(this).val()<400){
 					 $("#300").prop("checked", true);
 				 }else if($(this).val()>400 && $(this).val()<500){
 					 $("#400").prop("checked", true);
