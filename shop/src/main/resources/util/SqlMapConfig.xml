@@ -6,11 +6,13 @@
    <typeAliases>
        <typeAlias alias="member" type="com.shop.GH.vo.MemberVO"/>       
        <typeAlias alias="shop" type="com.shop.GH.vo.admin.ShopVO"/>
+       <typeAlias alias="product" type="com.shop.GH.vo.ProductVO"/>
    </typeAliases>
    
    <mappers>
   		<mapper resource="sql/member.xml"></mapper>
   		<mapper resource="sql/shopAdmin.xml"></mapper>
+  		<mapper resource="sql/mainShop.xml"></mapper>
    </mappers>
 </configuration>
 
