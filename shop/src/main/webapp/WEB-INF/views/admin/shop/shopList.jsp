@@ -21,7 +21,44 @@
      right:0;
      padding-top:10%;
     }
-    
+    .admin-ch{
+    	height: 20px;
+    	display:none;
+    }
+    #ch-wrap{
+    	width: 50%;
+		max-width: 66.66667%;
+		margin: 0 auto;
+    }
+    label{
+     flex: auto!important;
+     width: 24%!important;
+     text-align: center;
+     padding: 15px;
+    }
+   input[type=checkbox], input[type=radio]{
+   height: 16px;
+   }
+      .checkbox-inline:hover{
+   	font-weight:900!important;
+   	cursor:pointer!important;
+   	color:#007bff!important;
+   }
+  .checkbox-inline:active{
+   font-weight:900!important;
+   	cursor:pointer!important;
+   	color:#007bff!important;
+   } 
+   
+   .checkbox-inline:visited{
+   font-weight:900!important;
+   	cursor:pointer!important;
+   	color:#007bff!important;
+   }
+   .table td{
+   vertical-align: middle;
+   }
+
 </style>
 <script type="text/javascript">
 function ajaxlist(){
@@ -109,7 +146,7 @@ $(document).ready(function() {
 					 $("#100").prop("checked", true);
 				 }else if($(this).val()>200 && $(this).val()<300){
 					 $("#200").prop("checked", true);
-				 }else if($(this).val()>300 && $(this).val()<400){
+				 }else ifS($(this).val()>300 && $(this).val()<400){
 					 $("#300").prop("checked", true);
 				 }else if($(this).val()>400 && $(this).val()<500){
 					 $("#400").prop("checked", true);
@@ -199,7 +236,7 @@ $(document).ready(function() {
 		<div class="banner-area hm1-banner pt-130 pb-107"><!-- divnanner -->
 			<div class="list-group">			   
 			    <a href="shopList.admin" class="list-group-item active"><i class="fa fa-key"></i> <span>상픔리스트</span></a>
-			    <a href="shopAdd.admin" class="list-group-item"><i class="fa fa-credit-card"></i> <span>상품등록</span></a>
+			    <a target="_blank" href="shopAdd.admin" class="list-group-item"><i class="fa fa-credit-card"></i> <span>상품등록</span></a>
 			    <a href="#" class="list-group-item"><i class="fa fa-question-circle"></i> <span>주문배송</span></a>
 			    <a href="#" class="list-group-item"><i class="fa fa-arrow-circle-o-left"></i> <span></span></a>
 			    <a href="#" class="list-group-item"><i class="fa fa-book"></i> <span>공지,질문답변</span></a>
@@ -207,74 +244,75 @@ $(document).ready(function() {
 			  </div>
 
 
-			  
+			<div id="ch-wrap">
 			  <div id="selectcate" class="container">
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="100" name="tall" value="100">상의
+				  <input type="checkbox" id="100" class="admin-ch" name="tall" value="100">상의
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="200" name="tall" value="200">하의
+				  <input type="checkbox" id="200" class="admin-ch" name="tall" value="200">하의
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="300" name="tall" value="300">겉옷
+				  <input type="checkbox" id="300" class="admin-ch" name="tall" value="300">겉옷
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="400" name="tall" value="400">신발
+				  <input type="checkbox" id="400" class="admin-ch" name="tall" value="400">신발
 				</label>				
 				<br>
 				
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="101" name="small" value="101">반팔
+				  <input type="checkbox" id="101" class="admin-ch" name="small" value="101">반팔
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="102" name="small" value="102">긴팔
+				  <input type="checkbox" id="102" class="admin-ch" name="small" value="102">긴팔
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="103" name="small" value="103">맨투맨/후드
+				  <input type="checkbox" id="103" class="admin-ch" name="small" value="103">맨투맨/후드
 				</label>
 				<br>
 								
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="301" name="small" value="301">자켓
+				  <input type="checkbox" id="301" class="admin-ch" name="small" value="301">자켓
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="302" name="small" value="302">코트/블레이저
+				  <input type="checkbox" id="302" class="admin-ch" name="small" value="302">코트/블레이저
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="303" name="small" value="303">가디건/조끼
+				  <input type="checkbox" id="303" class="admin-ch" name="small" value="303">가디건/조끼
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="304" name="small" value="304">패딩
-				</label>
-				<br>
-				
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="201" name="small" value="201">반바지
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="202" name="small" value="202">슬랙스
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="203" name="small" value="203">청바지
-				</label>
-				<label class="checkbox-inline">
-				  <input type="checkbox" id="204" name="small" value="204">면바지
+				  <input type="checkbox" id="304" class="admin-ch" name="small" value="304">패딩
 				</label>
 				<br>
 				
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="401" name="small" value="401">운동화/스니커즈
+				  <input type="checkbox" id="201" class="admin-ch" name="small" value="201">반바지
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="402" name="small" value="402">구두/로퍼
+				  <input type="checkbox" id="202" class="admin-ch" name="small" value="202">슬랙스
 				</label>
 				<label class="checkbox-inline">
-				  <input type="checkbox" id="403" name="small" value="403">샌들/슬리퍼
+				  <input type="checkbox" id="203" class="admin-ch" name="small" value="203">청바지
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="204" class="admin-ch" name="small" value="204">면바지
+				</label>
+				<br>
+				
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="401" class="admin-ch" name="small" value="401">운동화/스니커즈
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="402" class="admin-ch" name="small" value="402">구두/로퍼
+				</label>
+				<label class="checkbox-inline">
+				  <input type="checkbox" id="403" class="admin-ch" name="small" value="403">샌들/슬리퍼
 				</label>				
 				<br>
 				</div>
+			</div>
 					<!-- keyword -->
-					<div>
+				<div class="container">
 					<select name="keysel" id="keysel">					   
 					    <option value="PD_NO">상품번호</option>
 					    <option value="PD_NAME">상품명</option>					    

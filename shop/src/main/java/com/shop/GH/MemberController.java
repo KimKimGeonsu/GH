@@ -78,25 +78,13 @@ public class MemberController {
 						HttpServletResponse response
 						)throws Exception {
 		
+
+		
+		
+		//int result = memberservice.isId(USER_ID, USER_PASS);
+
 		int result = memberservice.isId(m.getUSER_ID(),m.getUSER_PASS());
 		
-//		boolean userCheck = bc.matches(
-//						m.getUSER_PASS(),
-//						memberservice.isId(m.getUSER_ID()).getUSER_PASS()
-//						);
-//		
-//		if(userCheck) {
-////			session.setAttribute("id", m.getUSER_ID());
-////			return "index";
-//			System.out.println("로그인");
-//			return null;
-//		}else {
-//			response.setContentType("text/html;charset=utf-8");
-//			PrintWriter out = response.getWriter();
-//			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요'); history.go(-1);</script>");
-//			out.close();
-//			return null;
-//		}
 		
 		if(result == 1) {
 			session.setAttribute("id", m.getUSER_ID()); //session에 id저장
@@ -131,6 +119,7 @@ public class MemberController {
 		
 		mv.setViewName("category/shop");
 		mv.addObject("category", category);
+
 		
 		return mv;
 	}

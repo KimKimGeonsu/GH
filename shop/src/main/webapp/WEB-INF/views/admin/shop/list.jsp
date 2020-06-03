@@ -10,7 +10,7 @@
 </head>
 <body>		
 				<br><br>
-				<div class="container"><button>삭제하기</button></div> 
+				<div class="container"><button class="btn">삭제하기</button></div> 
 			<table class="table table-bordered" style="text-align: center;">
 		<tr>
 			<th><input type="checkbox"></th>
