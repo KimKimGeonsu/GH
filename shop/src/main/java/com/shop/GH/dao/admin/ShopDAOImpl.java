@@ -20,9 +20,9 @@ public class ShopDAOImpl implements ShopDAO{
 		
 	//상품목록
 	@Override
-	public List<ShopVO> listShop() {
+	public List<ShopVO> listShop(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return sql.selectList("shopAdmin.shopList");
+		return sql.selectList("shopAdmin.shopList",map);
 	}
 
 	//상품등록
@@ -39,11 +39,7 @@ public class ShopDAOImpl implements ShopDAO{
 		return sql.selectList("shopAdmin.cate",cate);
 	}
 	
-	//카테고리리스트 클릭시
-	@Override
-	public List<ShopVO> cateshop(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return sql.selectList("shopAdmin.catesel",map);
-	}
+
+
 
 }
