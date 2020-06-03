@@ -5,21 +5,121 @@
 
 	<!-- 등록 -->
 	<insert id="shopInsert">
-	insert into product_tbl values((SELECT NVL(MAX(PD_NO),0)+1 FROM PRODUCT_TBL),
-	#{PD_NAME},#{PD_CATEGORY_NO},#{PD_PRICE},#{PD_IMG},#{PD_QUANTITY},#{PD_INFO},0,sysdate)
+		insert into product_tbl values((SELECT NVL(MAX(PD_NO),0)+1 FROM
+		PRODUCT_TBL),
+		#{PD_NAME},#{PD_CATEGORY_NO},#{PD_SUB_CATEGORY_NO},#{PD_PRICE},#{PD_IMG},#{PD_QUANTITY},#{PD_INFO},0,sysdate)
 	</insert>
-	
-	<!-- 카테고리 -->
+
+	<!-- 카테고리 1,2차 에이잭스-->
 	<select id="cate" resultType="shop" parameterType="int">
-	select * from  sub_category_tbl where SC_NO_REF=#{cate}
+		<choose>
+			<when test="value gt 1">
+				select * from sub_category_tbl where SC_NO_REF=#{cate}
+			</when>
+			<otherwise>
+				select * from CATEGORY_TBL
+			</otherwise>
+		</choose>
 	</select>
 
 	<!-- 조회 -->
-	<select id="shopList" resultType="shop">
-	select * from product_tbl
+	<select id="shopListz" resultType="shop" parameterType="java.util.HashMap">
+		select * from product_tbl
+	</select>
+	
+	<!-- 리스트 선택시 -->
+	<select id="shopList" resultType="shop" parameterType="java.util.HashMap">
+		select * from PRODUCT_TBL
+			<choose>
+				<when test="tall != null and keyword ==null">
+				 where PD_CATEGORY_NO IN				 
+					<foreach collection="tall" item="tall" index="index" open="(" close=")" separator=",">
+							#{tall}
+				     </foreach>
+			     </when>
+			     <when test="keyword!=null and tall !=null">
+				 where (PD_CATEGORY_NO IN				 
+					<foreach collection="tall" item="tall" index="index" open="(" close=")" separator=",">
+							#{tall}
+				     </foreach>
+			     </when>
+			     			     
+		     </choose>	
+		     
+		     	     
+		     <choose>				    	
+			     <when test="small != null and tall != null">
+			     OR PD_SUB_CATEGORY_NO IN  
+				     <foreach collection="small" item="small" index="index"  open="(" close=")" separator=",">
+				             #{small}
+				     </foreach>				     
+				</when>				
+				<when test="small != null and tall == null and keyword==null">
+			     where PD_SUB_CATEGORY_NO IN  
+				     <foreach collection="small" item="small" index="index"  open="(" close=")" separator=",">
+				             #{small}
+				     </foreach>     							         	     				    
+				</when>
+				<when test="small != null and tall == null and keyword!=null">
+			     where (PD_SUB_CATEGORY_NO IN  
+				     <foreach collection="small" item="small" index="index"  open="(" close=")" separator=",">
+				             #{small}
+				     </foreach>	
+				</when>
+			</choose>
+			
+			<choose>
+			<when test="keyword != null and tall ==null and small==null">
+			where ${key} LIKE '%'||'${keyword}'||'%'
+			</when>
+			<when test="keyword != null">
+			) AND ${key} LIKE '%'||'${keyword}'||'%'
+			</when>
+			</choose>
+			
 	</select>
 	
 	
 	
+	<!-- 리스트 선택시 -->
+	<!-- <select id="shopList" resultType="shop" parameterType="java.util.HashMap">
+		select * from PRODUCT_TBL
+			<choose>
+				<when test="tall != null">
+				 where PD_CATEGORY_NO IN						
+					<foreach collection="tall" item="tall" index="index" open="(" close=")" separator=",">
+							#{tall}
+				     </foreach>
+			     </when>
+
+		     </choose>	
+		     
+		     	     
+		     <choose>				    	
+			     <when test="small != null and tall != null">
+			     OR PD_SUB_CATEGORY_NO IN  
+				     <foreach collection="small" item="small" index="index"  open="(" close=")" separator=",">
+				             #{small}
+				     </foreach>				     
+				</when>
+				<when test="small != null and tall == null">
+			     where PD_SUB_CATEGORY_NO IN  
+				     <foreach collection="small" item="small" index="index"  open="(" close=")" separator=",">
+				             #{small}
+				     </foreach>				     
+				</when>
+	
+			</choose>
+			<choose>
+			<when test="keyword != null">
+			title like '%' ||  #{keyword} || '%'
+			</when>
+			</choose>
+			
+	</select> -->
+        
+
+
+
 
 </mapper>

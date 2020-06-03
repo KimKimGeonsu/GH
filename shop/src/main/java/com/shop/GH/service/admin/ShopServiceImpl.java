@@ -1,6 +1,7 @@
 package com.shop.GH.service.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,9 @@ public class ShopServiceImpl implements ShopService {
 
 	// 상품목록
 	@Override
-	public List<ShopVO> listShop() {
+	public List<ShopVO> listShop(Map<String, Object> map) {
 		// TODO Auto-generated method stub
-		return dao.listShop();
+		return dao.listShop(map);
 	}
 
 	// 상품등록
@@ -34,5 +35,10 @@ public class ShopServiceImpl implements ShopService {
 		// TODO Auto-generated method stub
 		return dao.cate(cate);
 	}
+
+
+
+
+	
 
 }
