@@ -8,4 +8,14 @@
 		select * from product_tbl
 		where pd_sub_category_no = #{test}
 	</select>		
+	
+	<!-- 카테고리 리스트 -->
+	<select id="cgList" resultType="category">
+		select * from category_tbl
+	</select>
+	
+	<!-- 서브카테고리 리스트 -->
+	<select id="scgList" resultType="subcategory">
+		select * from sub_category_tbl
+	</select>
 </mapper>

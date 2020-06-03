@@ -24,42 +24,6 @@
             	.main-menu nav ul li ul > li > a::before{background:#389bb1 none repeat scroll 0 0;}
             	.same-style button:hover, .same-style a:hover{color:#389bb1;}
             </style>
-            <script>
-            	$(function(){                    		
-            		$.ajax({
-            			type : "get",
-            			url : "CategoryList",
-            			dataType : "json",
-            			cache : false,
-            			success : function(data){
-            				console.log(data.cglist)
-            				console.log(data.scglist)            				
-            				output = '';
-            				output += '<li><a href="cgAction?category=best">BEST</a>';            				
-            				$(data.cglist).each(
-            						function(index, item){
-            							//item = data.cglist            							
-            							output += '<li><a href="#">' +item.c_NAME+ '<i class="ion-ios-arrow-down"></i></a>';
-            							
-            						}            						
-            					)//each end            						
-            				console.log(output)
-            				$('.category-list').prepend(output);
-            			}//success end
-            			
-            		})//ajax end   
-            		
-            	 /*  <li><a href="cgAction?category=best">BEST</a>
-                     </li>
-                     <li><a href="#">TOP<i class="ion-ios-arrow-down"></i></a>
-                         <ul>
-                             <li><a href="#">반팔</a></li>
-                             <li><a href="#">긴팔</a></li>
-                             <li><a href="#">맨투맨/후드</a></li>
-                         </ul>
-                     </li> */
-            	})            	
-            </script>
             <!-- header start -->
             <header>
                 <div class="header-area transparent-bar">
@@ -95,10 +59,40 @@
                                     </div>
                                     <div class="main-menu">
                                         <nav>
-                                            <ul class="category-list">
-                                             	<!-- category ajax -->
-                                             	
-                                                <li><a href="#">공지사항 &amp; 리뷰<i class="ion-ios-arrow-down"></i></a>
+                                            <ul>
+                                                <li><a href="cgAction?category=best">BEST</a>
+                                                </li>
+                                                <li><a href="#">TOP<i class="ion-ios-arrow-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">반팔</a></li>
+                                                        <li><a href="#">긴팔</a></li>
+                                                        <li><a href="#">맨투맨/후드</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">OUTER<i class="ion-ios-arrow-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">자켓</a></li>
+                                                        <li><a href="#">코트/블레이져</a></li>
+                                                        <li><a href="#">가디건/조끼</a></li>
+                                                        <li><a href="#">패딩</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">PANTS<i class="ion-ios-arrow-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">반바지</a></li>
+                                                        <li><a href="#">슬랙스</a></li>
+                                                        <li><a href="#">청바지</a></li>
+                                                        <li><a href="#">면바지</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">SHOES<i class="ion-ios-arrow-down"></i></a>
+                                                    <ul>
+                                                        <li><a href="#">운동화/스니커즈</a></li>
+                                                        <li><a href="#">구두/로퍼</a></li>
+                                                        <li><a href="#">샌들/슬리퍼</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><a href="#">공지사항 & 리뷰<i class="ion-ios-arrow-down"></i></a>
                                                     <ul>
                                                         <li><a href="#">공지사항</a></li>
                                                         <li><a href="#">QnA</a></li>
@@ -112,7 +106,7 @@
                                                     <li><a href="shopList.admin">상품리스트</a></li>
                                                     <li><a href="selectAll.admin">회원관리</a></li>
                                                 </ul>
-                                            	</li>
+                                            </li>
                                             
                                             </ul>
                                         </nav>
