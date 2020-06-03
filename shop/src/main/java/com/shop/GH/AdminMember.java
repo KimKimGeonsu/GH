@@ -30,6 +30,7 @@ import com.shop.GH.vo.admin.ShopVO;
  * @관리자 멤버 컨트롤러
  *
  */
+///tfftufufufu
 @Controller
 public class AdminMember {
 	//123
