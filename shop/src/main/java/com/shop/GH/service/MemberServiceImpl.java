@@ -31,12 +31,11 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int isId(String user_ID, String user_PASS) {
 		MemberVO rmember = dao.isId(user_ID);	
-		System.out.println(rmember.getUSER_ID());
-		System.out.println(rmember.getUSER_PASS());
+			
 		
 		boolean userCheck = bc.matches(
 					user_PASS,
-					rmember.getUSER_PASS()
+					rmember.getUSER_PASSWORD()
 				);
 		
 		int result = -1; //아이디가 존재하지 않는 경우
