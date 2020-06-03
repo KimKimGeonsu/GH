@@ -100,6 +100,8 @@ public class MemberController {
 						HttpServletResponse response
 						)throws Exception {
 		
+		
+		
 		//int result = memberservice.isId(USER_ID, USER_PASS);
 		
 		return null;
