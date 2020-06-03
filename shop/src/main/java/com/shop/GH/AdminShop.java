@@ -39,7 +39,7 @@ import com.shop.GH.vo.admin.ShopVO;
  * @관리자 상품컨트롤러
  *
  */  
-
+//테스팅ㅇㅇㅇㅇ
 @Controller
 public class AdminShop {
 
@@ -142,6 +142,7 @@ public class AdminShop {
 		vo.setPD_IMG(ymdPath + uid + "_" + file.getOriginalFilename());
 		if (new File(filePath + ymdPath).mkdirs()) {
 		}
+		System.out.println(filePath + ymdPath);
 		file.transferTo(new File(filePath + vo.getPD_IMG()));
 		int result = shop.insertShop(vo);
 		response.setContentType("text/html;charset=utf-8");
