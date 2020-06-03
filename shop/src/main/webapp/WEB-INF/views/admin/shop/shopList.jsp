@@ -126,7 +126,7 @@ $(document).ready(function() {
 
 	  
 	  
-	  
+	    
 	  //상품리스트
 /* 	  $.ajax({
 				url:"ajaxlist.admin",
