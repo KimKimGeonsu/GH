@@ -50,8 +50,8 @@ public class MemberController {
 	public void joinAction(MemberVO member, HttpServletResponse response) throws Exception{
 		
 		//비밀번호 암호화
-		member.setUSER_PASS(bc.encode(member.getUSER_PASS()));
-		System.out.println(member.getUSER_PASS());
+		member.setUSER_PASSWORD(bc.encode(member.getUSER_PASSWORD()));;
+		System.out.println(member.getUSER_PASSWORD());
 		
 		int result = memberservice.join(member);
 		
@@ -78,7 +78,7 @@ public class MemberController {
 						HttpServletResponse response
 						)throws Exception {
 		
-		int result = memberservice.isId(m.getUSER_ID(),m.getUSER_PASS());
+		int result = memberservice.isId(m.getUSER_ID(),m.getUSER_PASSWORD());
 		
 //		boolean userCheck = bc.matches(
 //						m.getUSER_PASS(),
