@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -32,34 +33,11 @@ public class MemberController {
 	@Autowired
 	private BCryptPasswordEncoder bc;
 		
+	//로그인 페이지 이동
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public ModelAndView home() {							
-		return new ModelAndView("member/login");
+	public String login() {
+		return "member/login";
 	}
-	
-//	@RequestMapping(value = "/register", method = RequestMethod.POST)
-//	public void register(MemberVO vo,HttpServletResponse response) throws IOException {
-//		System.out.println(vo);
-//		response.setContentType("text/html;charset=utf-8");
-//		vo.setPassword(bc.encode(vo.getPassword()));
-//		System.out.println(vo.getPassword());
-//		int result = memberservice.register(vo);
-//		PrintWriter out = response.getWriter();
-//		out.println("<script>");
-//		if (result == 1) {						
-//			out.println("alert('가입 성공');");
-//			out.println("location.href='/GH';");
-//
-//		}else {
-//			out.println("alert('가입 실패');");
-//			out.println("history.back();");
-//
-//		}
-//		out.println("</script>");
-//		out.close();
-//
-//	}
-//	
 	
 	//회원가입 페이지 이동
 	@RequestMapping(value = "/join" , method = RequestMethod.GET)
@@ -93,17 +71,56 @@ public class MemberController {
 	}
 	
 	//로그인
-	@RequestMapping(value = "login" , method = RequestMethod.POST)
+	@RequestMapping(value = "/loginProcess" , method = RequestMethod.POST)
 	public String login(
-						String USER_ID, String USER_PASS,
+						MemberVO m,
 						HttpSession session,
 						HttpServletResponse response
 						)throws Exception {
 		
+
 		
 		
 		//int result = memberservice.isId(USER_ID, USER_PASS);
+
+		int result = memberservice.isId(m.getUSER_ID(),m.getUSER_PASS());
 		
-		return null;
+		
+		if(result == 1) {
+			session.setAttribute("id", m.getUSER_ID()); //session에 id저장
+			System.out.println("session ID : " + m.getUSER_ID());			
+			System.out.println("로그인 성공");
+			//return "index";
+			return "redirect:/";
+		}else {				
+			response.setContentType("text/html;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>alert('아이디 또는 비밀번호를 확인해주세요'); history.go(-1);</script>");
+			out.close();		
+			return null;
+		}
+	}
+	
+	//로그아웃
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		return "redirect:login";
+	}
+		
+	//메뉴선택
+	@RequestMapping(value = "/cgAction", method = RequestMethod.GET)
+	public ModelAndView cgAction(ModelAndView mv,
+								 String category) {
+		
+		System.out.println("category : " + category);
+		
+		mv.setViewName("category/shop");
+		mv.addObject("category", category);
+
+		
+		return mv;
 	}
 }
