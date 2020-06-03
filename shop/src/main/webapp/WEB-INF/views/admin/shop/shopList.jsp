@@ -272,7 +272,9 @@ $(document).ready(function() {
 				  <input type="checkbox" id="403" name="small" value="403">샌들/슬리퍼
 				</label>				
 				<br>
+				</div>
 					<!-- keyword -->
+					<div>
 					<select name="keysel" id="keysel">					   
 					    <option value="PD_NO">상품번호</option>
 					    <option value="PD_NAME">상품명</option>					    
@@ -281,9 +283,10 @@ $(document).ready(function() {
 				</div>
 				
 				
-			 
+				
 			  <div id="ajaxpage" class="container"><!-- ajax -->
-	
+				
+				
 			</div>
 	 
 		         
