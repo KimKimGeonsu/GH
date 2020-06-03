@@ -126,7 +126,7 @@ $(document).ready(function() {
 
 	  
 	  
-	  
+	      
 	  //상품리스트
 /* 	  $.ajax({
 				url:"ajaxlist.admin",
@@ -139,14 +139,14 @@ $(document).ready(function() {
 					
 				}
 			});   */
-	
-			
+	             
+			  
 	$("#101,#102,#103,#201,#202,#203,#204,#301,#302,#303,#304,#401,#402,#403").click(function() {
 				 if($(this).val()<200){
 					 $("#100").prop("checked", true);
 				 }else if($(this).val()>200 && $(this).val()<300){
 					 $("#200").prop("checked", true);
-				 }else ifS($(this).val()>300 && $(this).val()<400){
+				 }else if ($(this).val()>300 && $(this).val()<400){
 					 $("#300").prop("checked", true);
 				 }else if($(this).val()>400 && $(this).val()<500){
 					 $("#400").prop("checked", true);
