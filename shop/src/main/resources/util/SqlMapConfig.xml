@@ -7,6 +7,8 @@
        <typeAlias alias="member" type="com.shop.GH.vo.MemberVO"/>       
        <typeAlias alias="shop" type="com.shop.GH.vo.admin.ShopVO"/>
        <typeAlias alias="product" type="com.shop.GH.vo.ProductVO"/>
+       <typeAlias alias="category" type="com.shop.GH.vo.CategoryVO"/>
+       <typeAlias alias="subcategory" type="com.shop.GH.vo.SubCategoryVO"/>
    </typeAliases>
    
    <mappers>
