@@ -24,6 +24,7 @@
 		 <resources mapping="/resources/**" location="/resources/" />								  	  	 
 	 	 <resources mapping="/assets/**" location="/resources/assets/" />
 	 	 <resources mapping="/admin/assets/**" location="/resources/assets/" />
+	 	 <resources mapping="/ad/**" location="/resources/admin/" />
 	 	 
 	 	 <!-- 파일 업로드매핑 -->
 		<resources mapping="/shopImg/**" location="/resources/shopImage/" />
