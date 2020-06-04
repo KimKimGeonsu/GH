@@ -45,13 +45,6 @@ public class AdminShop {
 
 	@Autowired
 	private ShopService shop;
-
-	// 상품등록 메인
-//	@RequestMapping(value = "shopMain.admin", method = RequestMethod.GET)
-//	public String shopMain() {
-//		return "admin/shop/shopList";
-//	}
-
 	// 상품목록
 	@RequestMapping(value = "shopList.admin", method = RequestMethod.GET)
 	public ModelAndView shopList(ModelAndView mv) {
