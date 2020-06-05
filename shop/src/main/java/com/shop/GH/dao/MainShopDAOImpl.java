@@ -1,5 +1,6 @@
 package com.shop.GH.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -17,8 +18,8 @@ public class MainShopDAOImpl implements MainShopDAO{
 	private SqlSessionTemplate sqlSession;
 
 	@Override
-	public List<ProductVO> getProductList(int test) {
-		return sqlSession.selectList("mainShop.list", test);
+	public List<ProductVO> getProductList(HashMap<String, Integer>map) {
+		return sqlSession.selectList("mainShop.list", map);
 	}
 
 	@Override
@@ -29,5 +30,10 @@ public class MainShopDAOImpl implements MainShopDAO{
 	@Override
 	public List<SubCategoryVO> getScgList() {
 		return sqlSession.selectList("mainShop.scgList");
+	}
+
+	@Override
+	public String cgName(HashMap<String, Integer>map) {
+		return sqlSession.selectOne("mainShop.cgName", map);
 	}
 }

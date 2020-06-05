@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!-- jstl 콤마기능 -->
+<%@ taglib prefix="comma" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!doctype html>
 <html class="no-js" lang="zxx">
     <head>
@@ -13,6 +15,8 @@
 		<jsp:include page="../include_main/header.jsp" />
 		<style>
 			.pt-120{padding:0;}
+			.product-action-3{background-color:#389bb1;}
+			h4 a:hover, .product-addtocart > a:hover{color:#389bb1;}
 		</style>
     </head>
     <body>
@@ -37,7 +41,7 @@
             <div class="breadcrumb-area mt-37 hm-4-padding">
                 <div class="container-fluid">
                     <div class="breadcrumb-content text-center">
-                        <h2>${category}</h2>
+                        <h2>${cgName}</h2>
                         <ul>
                             <li>
                                 <a href="#">home</a>
@@ -122,15 +126,17 @@
                         <div class="product-grid product-view">
                             <div class="row">
                             	<!-- 상품1개 -->
+                            	<c:if test="${!empty p}">
+                            	<c:forEach var="p" items="${p}">
                                 <div class="product-width col-md-6 col-xl-3 col-lg-4">
                                     <div class="product-wrapper mb-35">
                                         <div class="product-img">
                                             <a href="#">                                            
-                                                <img src="assets/img/product/21.jpg" alt="">                                                
+                                                <img src="shopImg/${p.PD_IMG}" alt="" style="width:310px; height:375px;">                                                
                                             </a>
-                                            <div class="price-decrease">
+                                            <!-- <div class="price-decrease">
                                                 <span>30% off</span>
-                                            </div>
+                                            </div> -->
                                             <div class="product-action-3">
                                                 <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
                                                     <i class="ti-plus"></i> Quict View
@@ -140,7 +146,7 @@
                                         <div class="product-content">            
                                             <div class="product-title-wishlist">                                            	
                                                 <div class="product-title-3">
-                                                    <h4><a href="product-details.html">name</a></h4>
+                                                    <h4><a href="#">${p.PD_NAME}</a></h4>
                                                 </div>
                                                 <div class="product-wishlist-3">
                                                     <a href="#"><i class="ti-heart"></i></a>
@@ -148,8 +154,10 @@
                                             </div>
                                             <div class="product-peice-addtocart">
                                                 <div class="product-peice-3">
-                                                    <span class="old">$200.00 </span>
-                                                    <span>$120.00</span>
+                                                    <!-- <span class="old">$200.00 </span> -->
+                                                    <span>
+                                                    	<comma:formatNumber value="${p.PD_PRICE}" pattern="#,###"/> won
+                                                    </span>
                                                 </div>
                                                 <div class="product-addtocart">
                                                     <a href="#"> <i class="ti-shopping-cart"></i> Add to cart</a>
@@ -175,7 +183,12 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>    
+                                </div> 
+                                </c:forEach>
+                                </c:if>
+                                <c:if test="${empty p}">
+                                	<h5 style="margin:0 auto">등록된 상품이 없습니다.</h5>
+                                </c:if>
                                 <!-- 상품1개 end -->                          
                             </div>
                             <div class="pagination-style text-center mt-30">
