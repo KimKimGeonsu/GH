@@ -35,15 +35,23 @@
             				console.log(data.cglist)
             				console.log(data.scglist)            				
             				output = '';
-            				output += '<li><a href="cgAction?category=best">BEST</a>';            				
+            				output += '<li><a href="#">BEST</a>';            				
             				$(data.cglist).each(
             						function(index, item){
-            							//item = data.cglist            							
-            							output += '<li><a href="#">' +item.c_NAME+ '<i class="ion-ios-arrow-down"></i></a>';
-            							
+            							//item = data.cglist
+            							c_no = item.c_NO;
+            							output += '<li><a href="cgAction?cgNo='+item.c_NO+'">' +item.c_NAME+ '<i class="ion-ios-arrow-down"></i></a>';
+            							output += '<ul>';
+            							$(data.scglist).each(
+            									function(index, item){
+            										if(item.sc_NO_REF == c_no)
+            											output +='<li><a href="cgAction?scgNo='+item.sc_NO+'">'+item.sc_NAME+'</a></li>';
+            										}
+            									)
+            							output += '</ul>';
             						}            						
-            					)//each end            						
-            				console.log(output)
+            					)//each end            	
+            					
             				$('.category-list').prepend(output);
             			}//success end
             			

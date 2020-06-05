@@ -9,12 +9,14 @@ import com.shop.GH.vo.SubCategoryVO;
 public interface MainShopService {
 
 	//product list test
-	List<ProductVO> getProductListTest(int test);
+	List<ProductVO> getProductListTest(int cgNo, int scgNo);
 	
 	//카테고리 리스트
 	List<CategoryVO> getCgList();
 
 	//서브카테고리 리스트
 	List<SubCategoryVO> getScgList();
+
+	String cgName(int cgNo, int scgNo);
 	
 }
