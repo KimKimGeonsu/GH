@@ -8,12 +8,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TreeSet;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -23,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.shop.GH.service.admin.ShopService;
 import com.shop.GH.vo.admin.ShopVO;
+import com.shop.GH.vo.admin.Shop_COL_SIZE;
 
 /**
  * @author 김건수
@@ -94,25 +94,6 @@ public class AdminShop {
 		return new ModelAndView("admin/shop/list", "list", shop.listShop(map));
 	}
 	
-//	심심풀이용  
-//	@ResponseBody
-//	@RequestMapping(value = "ajaxlist2.admin", method = RequestMethod.GET)
-//	public Object ajaxList2(ModelAndView mv,ShopVO vo,@RequestParam(value="tall[]", required = false) List<Integer> tall,@RequestParam(value="small[]", required = false) List<Integer> small) {		
-//		AX ax = new AX();
-//		ax.setA("하이");
-//		ax.setAa("하이2");
-//		AB ab= new AB();
-//		ab.setAb("에이비");
-//		ab.setAbc("에비씨");
-//		ArrayList<AB> abc = new ArrayList<AB>();
-//		abc.add(ab);
-//		ax.setAb(abc);				
-//		
-//
-//		
-//		return ax;
-//	}
-		
 
 	// 상품등록 ------유효성 이미지만했음 나머지들도 해야됨
 	@RequestMapping(value = "shopAdd.admin", method = RequestMethod.GET)
@@ -122,9 +103,8 @@ public class AdminShop {
 
 	// 상품등록 하기
 	@RequestMapping(value = "shopAdd.admin", method = RequestMethod.POST)
-	public void shopAdd2(ShopVO vo, HttpServletResponse response, MultipartHttpServletRequest mtf,
-			HttpServletRequest request) throws IllegalStateException, IOException {	
-		
+	public void shopAdd2(HttpServletRequest request,ShopVO vo,Shop_COL_SIZE shops, MultipartHttpServletRequest mtf,
+			BindingResult B_result,HttpServletResponse response) throws IllegalStateException, IOException {			
 		String filePath = request.getSession().getServletContext().getRealPath("resources/shopImage/");
 		UUID uid = UUID.randomUUID();
 		MultipartFile file = mtf.getFile("MAIN_IMG");
@@ -137,21 +117,26 @@ public class AdminShop {
 		}
 		System.out.println(filePath + ymdPath);
 		file.transferTo(new File(filePath + vo.getPD_IMG()));
+
 		int result = shop.insertShop(vo);
+		//트랜잭션
+		int result2 = shop.insertShop2(shops.getList());
+		
+
+		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		if (result == 1) {
-			out.println("alert('완료되었습니다');");
+		if (result == 1 && result2!=-1) {
+			out.println("alert('등록되었습니다');");
 			out.println("location.href='';");
 			out.println("</script>");
 		} else {
-			out.println("alert('가입 실패');");
+			out.println("alert('등록실패');");
 			out.println("history.back();");
 		}
 		out.println("</script>");
 		out.close();
-
 	}
 	
 	//등록카테고리
@@ -183,18 +168,13 @@ public class AdminShop {
 		try {
 			String fileName = upload.getOriginalFilename();
 			byte[] bytes = upload.getBytes();
-
 			String uploadPath = request.getSession().getServletContext().getRealPath("resources/ckeditImg/");
-			if (new File(uploadPath + ymdPath).mkdirs()) {
-			}
-
+			if (new File(uploadPath + ymdPath).mkdirs()) {}
 			out = new FileOutputStream(new File(uploadPath + ymdPath + uid + "_" + fileName));
 			out.write(bytes);
 			out.flush();
-
 			printWriter = response.getWriter();
 			String fileUrl = "ckupload.admin?uid=" + uid + "&fileName=" + fileName;
-
 			printWriter.println("{\"filename\" : \"" + fileName + "\", \"uploaded\" : 1, \"url\":\"" + fileUrl + "\"}");
 			printWriter.flush();
 
@@ -203,16 +183,13 @@ public class AdminShop {
 		} finally {
 			try {
 				if (out != null) {
-					out.close();
-				}
+					out.close();}
 				if (printWriter != null) {
-					printWriter.close();
-				}
-			} catch (IOException e) {
+					printWriter.close();}} 
+			catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-
 		return;
 	}
 
@@ -231,7 +208,6 @@ public class AdminShop {
 			int readByte = 0;
 			int length = 0;
 			byte[] imgBuf = null;
-
 			FileInputStream fileInputStream = null;
 			ByteArrayOutputStream outputStream = null;
 			ServletOutputStream out = null;
@@ -240,7 +216,6 @@ public class AdminShop {
 				fileInputStream = new FileInputStream(imgFile);
 				outputStream = new ByteArrayOutputStream();
 				out = response.getOutputStream();
-
 				while ((readByte = fileInputStream.read(buf)) != -1) {
 					outputStream.write(buf, 0, readByte);
 				}
