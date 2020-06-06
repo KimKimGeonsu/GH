@@ -1,5 +1,6 @@
 package com.shop.GH.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,12 @@ public class MainShopServiceImpl implements MainShopService{
 	private MainShopDAO dao;
 	
 	@Override
-	public List<ProductVO> getProductListTest(int test) {
-		return dao.getProductList(test);
+	public List<ProductVO> getProductListTest(int cgNo, int scgNo) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("cgNo", cgNo);
+		map.put("scgNo", scgNo);
+		
+		return dao.getProductList(map);
 	}
 
 	@Override
@@ -29,5 +34,14 @@ public class MainShopServiceImpl implements MainShopService{
 	@Override
 	public List<SubCategoryVO> getScgList() {
 		return dao.getScgList();
+	}
+
+	@Override
+	public String cgName(int cgNo, int scgNo) {
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		map.put("cgNo", cgNo);
+		map.put("scgNo", scgNo);		
+		
+		return dao.cgName(map);
 	}
 }

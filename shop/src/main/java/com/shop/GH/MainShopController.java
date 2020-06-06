@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -25,19 +26,25 @@ public class MainShopController {
 	//메뉴선택
 	@RequestMapping(value = "/cgAction", method = RequestMethod.GET)
 	public ModelAndView cgAction(ModelAndView mv,
-								 String category,
+								 @RequestParam(value="cgNo", defaultValue="0", required=false)int cgNo,
+								 @RequestParam(value="scgNo", defaultValue="0", required=false)int scgNo,
+								 //required=false : 파라미터 값이 존재하지않으면 null
 								 ProductVO product
 								) {		
-		int test = 101;
+		//카테고리 리스트
 		List<ProductVO> productlist 
-					= mainShopService.getProductListTest(test);		
+					= mainShopService.getProductListTest(cgNo, scgNo);
 		
-		System.out.println("category : " + category);
+		//카테고리 이름가져오는 용
+		String cgName = mainShopService.cgName(cgNo, scgNo);
 		
 		mv.setViewName("category/shop");
-		mv.addObject("category", category);
 		mv.addObject("p", productlist);
-		System.out.println(productlist.get(0).getPD_NAME());
+		mv.addObject("cgName", cgName);
+		
+		System.out.println("cgNo : " + cgNo 
+							+ ", scgNo : " + scgNo + ", cgName : " + cgName);		
+		//System.out.println(productlist.get(0).getPD_NAME());
 		
 		return mv;
 	}
@@ -46,7 +53,7 @@ public class MainShopController {
 	@ResponseBody
 	@RequestMapping(value = "/CategoryList", method = RequestMethod.GET)
 	public Object categoryList() throws Exception{
-		System.out.println("CategoryList");
+		
 		List<CategoryVO> cglist = mainShopService.getCgList();
 		List<SubCategoryVO> scglist = mainShopService.getScgList();
 		

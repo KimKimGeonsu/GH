@@ -4,9 +4,17 @@
 <mapper namespace="mainShop">
 	
 	<!-- test -->
-	<select id="list" parameterType="int" resultType="product">
+	<select id="list" parameterType="java.util.Map" resultType="product">
 		select * from product_tbl
-		where pd_sub_category_no = #{test}
+		where
+		<choose>
+			<when test="cgNo != 0">
+				pd_category_no = #{cgNo}
+			</when>
+			<when test="scgNo != 0">
+				pd_sub_category_no = #{scgNo} 
+			</when>
+		</choose>
 	</select>		
 	
 	<!-- 카테고리 리스트 -->
@@ -17,5 +25,17 @@
 	<!-- 서브카테고리 리스트 -->
 	<select id="scgList" resultType="subcategory">
 		select * from sub_category_tbl
+	</select>
+	
+	<!-- 카테고리 이름 -->
+	<select id="cgName" parameterType="java.util.Map" resultType="String">
+		<choose>
+			<when test="cgNo != 0">
+				select c_name from category_tbl where c_no = #{cgNo}			
+			</when>
+			<when test="scgNo != 0">
+				select sc_name from sub_category_tbl where sc_no = #{scgNo}
+			</when>
+		</choose>
 	</select>
 </mapper>
