@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.shop.GH.vo.admin.ShopVO;
+import com.shop.GH.vo.admin.Shop_COL_SIZE;
 
 
 @Repository
@@ -17,6 +18,7 @@ public class ShopDAOImpl implements ShopDAO{
 	@Inject
 	private SqlSessionTemplate sql;
 
+	
 		
 	//상품목록
 	@Override
@@ -29,7 +31,25 @@ public class ShopDAOImpl implements ShopDAO{
 	@Override
 	public int insertShop(ShopVO vo) {
 		// TODO Auto-generated method stub
+		int reuslt =0;
+		try{
 		return sql.insert("shopAdmin.shopInsert",vo);
+		}catch (Exception e) {
+			return reuslt;
+		}
+	}
+	
+	//등록2
+	@Override
+	public int insertShop2(List<Shop_COL_SIZE> list) { 
+		int result =-1;		
+		try {						
+			return sql.insert("shopAdmin.shopInsert2",list);
+		}catch (Exception e) {			
+			 sql.delete("shopAdmin.rollDel");
+			return result;
+		}
+		
 	}
 	
 	//카테고리
@@ -38,6 +58,8 @@ public class ShopDAOImpl implements ShopDAO{
 		// TODO Auto-generated method stub
 		return sql.selectList("shopAdmin.cate",cate);
 	}
+
+
 	
 
 

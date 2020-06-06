@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.shop.GH.dao.admin.ShopDAO;
 import com.shop.GH.vo.admin.ShopVO;
+import com.shop.GH.vo.admin.Shop_COL_SIZE;
 
 @Service
 public class ShopServiceImpl implements ShopService {
@@ -26,7 +27,21 @@ public class ShopServiceImpl implements ShopService {
 	@Override
 	public int insertShop(ShopVO vo) {
 		// TODO Auto-generated method stub
-		return dao.insertShop(vo);
+		int result =0;
+		
+		try {			
+		return result=dao.insertShop(vo);
+		}catch (Exception e) {
+		return result;	
+		}
+		
+	}
+	//등록2
+	@Override
+	public int insertShop2(List<Shop_COL_SIZE> list) {
+		// TODO Auto-generated method stub
+		return dao.insertShop2(list); 
+
 	}
 
 	// 카테고리
@@ -35,6 +50,8 @@ public class ShopServiceImpl implements ShopService {
 		// TODO Auto-generated method stub
 		return dao.cate(cate);
 	}
+
+
 
 
 

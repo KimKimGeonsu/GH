@@ -4,11 +4,24 @@
 <mapper namespace="shopAdmin">
 
 	<!-- 등록 -->
-	<insert id="shopInsert">
+  	<insert id="shopInsert">
 		insert into product_tbl values((SELECT NVL(MAX(PD_NO),0)+1 FROM
 		PRODUCT_TBL),
-		#{PD_NAME},#{PD_CATEGORY_NO},#{PD_SUB_CATEGORY_NO},#{PD_PRICE},#{PD_IMG},#{PD_QUANTITY},#{PD_INFO},0,sysdate)
-	</insert>
+		#{PD_NAME},#{PD_CATEGORY_NO},#{PD_SUB_CATEGORY_NO},#{PD_PRICE},#{PD_IMG},#{PD_INFO},0,sysdate)
+	</insert>  
+	
+	<!-- 등록2 -->	
+	 <insert id="shopInsert2" parameterType="java.util.List" >
+		 <foreach collection="list" item="list" open="INSERT ALL " separator=" " close="SELECT * FROM DUAL" > 
+         into PRODUCT_COL_SIZE values((SELECT NVL(MAX(PD_NO),0)+0 FROM PRODUCT_TBL),#{list.PD_COLOR},#{list.PD_SIZE},#{list.PD_QUANTITY})
+        </foreach>
+	</insert> 
+	
+	<!-- 트랜잭션 -->
+	<delete id="rollDel">
+	delete from product_tbl where PD_NO=(SELECT NVL(MAX(PD_NO),0)+0 FROM PRODUCT_TBL)
+	</delete>
+	
 
 	<!-- 카테고리 1,2차 에이잭스-->
 	<select id="cate" resultType="shop" parameterType="int">
