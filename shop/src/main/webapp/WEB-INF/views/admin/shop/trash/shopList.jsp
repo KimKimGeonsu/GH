@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-<jsp:include page="../../include_main/header_css.jsp" />
+<jsp:include page="../../../include_main/header_css.jsp" />
 <head>
 <style type="text/css">
  .list-group {
@@ -232,7 +232,7 @@ $(document).ready(function() {
 <body>
 
 	<div class="wrapper">
-		<jsp:include page="../../include_main/header.jsp" />
+		<jsp:include page="../../../include_main/header.jsp" />
 		
 		<div class="banner-area hm1-banner pt-130 pb-107"><!-- divnanner -->
 			<div class="list-group">			   
@@ -331,10 +331,10 @@ $(document).ready(function() {
 		         
             </div><!-- divbannerEnd -->
 
-		<jsp:include page="../../include_main/footer.jsp" />
+		<jsp:include page="../../../include_main/footer.jsp" />
 		
 	</div><!-- wrapperEnd -->
-	<jsp:include page="../../include_main/footer_js.jsp" />
+	<jsp:include page="../../../include_main/footer_js.jsp" />
 
 </body>
 </html>

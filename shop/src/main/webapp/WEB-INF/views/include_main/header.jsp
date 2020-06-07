@@ -114,12 +114,7 @@
                                                     </ul>
                                                 </li>
                                                 <!-- <li><a href="contact.html">contact us</a></li> -->												
-												<li><a href="shopList.admin">관리자모드</a>
-                                                <ul>
-                                                    <li><a href="shopAdd.admin">상품등록</a></li>
-                                                    <li><a href="shopList.admin">상품리스트</a></li>
-                                                    <li><a href="selectAll.admin">회원관리</a></li>
-                                                </ul>
+												<li><a href="shopMain.admin">관리자모드</a>                                                
                                             	</li>
                                             
                                             </ul>

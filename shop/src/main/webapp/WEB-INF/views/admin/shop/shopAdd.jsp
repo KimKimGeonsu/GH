@@ -95,7 +95,7 @@
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">           
             <a class="collapse-item active" href="shopAdd.admin">상품등록</a>
-            <a class="collapse-item" href="shopList.admin">리스트/수정/삭제</a>
+            <a class="collapse-item" href="shopManager.admin">리스트/수정/삭제</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
