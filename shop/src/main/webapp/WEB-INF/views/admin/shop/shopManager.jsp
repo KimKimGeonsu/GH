@@ -5,6 +5,36 @@
 <head>
 
 <jsp:include page="/WEB-INF/views/admin/include_admin/head.jsp"/>
+
+<script src="ad/vendor/jquery/jquery.min.js"></script>
+<script src="ad/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript-->
+<script src="ad/vendor/jquery-easing/jquery.easing.min.js"></script>
+<!-- Custom scripts for all pages-->
+<script src="ad/js/sb-admin-2.min.js"></script>
+<style type="text/css">
+body{
+line-height: 1;
+
+}
+th, th, td{
+text-align: center;
+}
+.table td, .table th{
+vertical-align: middle;
+}
+img{
+width: 150px;
+height: 150px;
+}
+.table-striped{
+ margin: 0;
+}
+
+.table-striped td,th{
+ padding: 0.1rem;
+}
+</style>
 </head>
 
 <body id="page-top">
@@ -31,8 +61,8 @@
         </a>
         <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar" style="">
           <div class="bg-white py-2 collapse-inner rounded">           
-            <a class="collapse-item active" href="shopAdd.admin">상품등록</a>
-            <a class="collapse-item" href="shopManager.admin">리스트/수정/삭제</a>
+            <a class="collapse-item" href="shopAdd.admin">상품등록</a>
+            <a class="collapse-item active" href="shopList.admin">리스트/수정/삭제</a>
             <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
@@ -91,10 +121,68 @@
 		<jsp:include page="/WEB-INF/views/admin/include_admin/header.jsp"/>
 
         <!-- Begin Page Content -->
+        <!-- 본문 -->
         <div class="container-fluid">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+		
+	<table id="cart" class="table table-hover table-condensed">
+		<caption style="caption-side: top;text-align: center;font-size:xx-large; padding-bottom:40px">등록된상품</caption>
+			
+    				<thead>
+    					<tr>
+	    					<td style="border-top: none;">
+		    					<div style="width: 100px">
+		    						<button class="btn btn-danger">삭제</button>
+		    					</div>
+	    					</td>
+    					</tr>
+						<tr>
+							<th style="width:7%"><div><input type="checkbox"></div></th>
+							<th style="width:8%">번호</th>
+							<th style="width:10%">이미지</th>
+							<th style="width:10%">분류</th>
+							<th style="width:20%">이름</th>
+							<th style="width:25%">수량</th>
+							<th style="width:10%" class="text-center">총 판매량</th>
+							<th style="width:10%">수정/삭제</th>
+						</tr>
+					</thead>
+					<!-- tbody라인 -->
+					<tbody id="tbody"> 
+						
+					
+					</tbody>
+			<script>
+					$.ajax({
+						url:"ajaxlist.admin",
+						type:"POST",
+						data:{},
+						dataType:"html",														
+						success:function(result){										
+							$("#tbody").append(result);
+						},error:function(){
+							
+						}});//ajax 
+					
+					</script>
+			
+					<tfoot>
+						<tr class="visible-xs">
+							
+						</tr>
+						<tr>
+							<td></td>
+							<td colspan="2" class="hidden-xs"></td>
+							<td class="hidden-xs text-center"></td>
+							<td></td>
+						</tr>
+					</tfoot>
+				</table>
+</div>
+        
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
+          
 
         </div>
         <!-- /.container-fluid -->
@@ -111,7 +199,7 @@
   </div>
   <!-- End of Page Wrapper -->
   <jsp:include page="/WEB-INF/views/admin/include_admin/scrolltop.jsp"/>
-  <jsp:include page="/WEB-INF/views/admin/include_admin/bootjs.jsp"/>
+  
 
 </body>
 

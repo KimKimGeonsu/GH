@@ -91,7 +91,7 @@ public class AdminShop {
 		map.put("small", small);	
 		map.put("keyword", keyword);
 		map.put("key", keysel);
-		return new ModelAndView("admin/shop/list", "list", shop.listShop(map));
+		return new ModelAndView("admin/shop/shopM_list", "list", shop.listShop(map));
 	}
 	
 
@@ -116,21 +116,16 @@ public class AdminShop {
 		if (new File(filePath + ymdPath).mkdirs()) {
 		}
 		System.out.println(filePath + ymdPath);
-		file.transferTo(new File(filePath + vo.getPD_IMG()));
-
-		int result = shop.insertShop(vo);
-		//트랜잭션
-		int result2 = shop.insertShop2(shops.getList());
-		
-
-		
+		file.transferTo(new File(filePath + vo.getPD_IMG()));		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.println("<script>");
-		if (result == 1 && result2!=-1) {
+		if (shop.insertShop(vo) == 1) {
+			//트랜잭션
+			if(shop.insertShop2(shops.getList())!=-1) {
 			out.println("alert('등록되었습니다');");
 			out.println("location.href='';");
-			out.println("</script>");
+			out.println("</script>");}
 		} else {
 			out.println("alert('등록실패');");
 			out.println("history.back();");
@@ -234,6 +229,12 @@ public class AdminShop {
 			}
 		}
 	}
+	
+		@RequestMapping(value = "shopManager.admin", method = RequestMethod.GET)
+		public String shopManager() {
+			return "admin/shop/shopManager";
+		}
+	
 
 	// 테스트용
 	@RequestMapping(value = "shop.dddddddddaaan", method = RequestMethod.GET)

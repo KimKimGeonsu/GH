@@ -4,12 +4,12 @@
 
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
-<jsp:include page="../../include_main/header_css.jsp" />
+<%-- <jsp:include page="../../include_main/header_css.jsp" /> --%>
 <script src="resources/ckeditor/ckeditor.js"></script>
 <body>
 
 	<div class="wrapper">
-		<jsp:include page="../../include_main/header.jsp" />
+		<%-- <jsp:include page="../../include_main/header.jsp" /> --%>
 		<div class="banner-area hm1-banner pt-130 pb-107">
 			<!-- divnanner -->
 			<div class="container">
@@ -116,12 +116,12 @@
 					
 		</div>
 		<!-- divbannerEnd -->
-
+<%-- 
 		<jsp:include page="../../include_main/footer.jsp" />
 
 	</div>
 	<!-- wrapperEnd -->
 	<jsp:include page="../../include_main/footer_js.jsp" />
-
+ --%>
 </body>
 </html>
