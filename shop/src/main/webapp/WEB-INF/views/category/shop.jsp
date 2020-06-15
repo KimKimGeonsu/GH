@@ -8,15 +8,22 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>GH SHOP</title>
+        <title>GH SHOP - ${cgName}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
         <jsp:include page="../include_main/header_css.jsp" />
 		<jsp:include page="../include_main/header.jsp" />
+		
+		<script src="assets/js/shop.js"></script>
 		<style>
 			.pt-120{padding:0;}
 			.product-action-3{background-color:#389bb1;}
 			h4 a:hover, .product-addtocart > a:hover{color:#389bb1;}
+			
+			#exampleModal .close{position:unset;}
+			.modal{margin-right:100px; margin-top:20px;}
+			.quick-view-list > a > img{width:100px; height:112px;}
 		</style>
     </head>
     <body>
@@ -137,11 +144,16 @@
                                             <!-- <div class="price-decrease">
                                                 <span>30% off</span>
                                             </div> -->
+                                            
+                                            <!-- 클릭시 modal나옴  , class = product-action-3 -->
                                             <div class="product-action-3">
                                                 <a class="action-plus-2" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
                                                     <i class="ti-plus"></i> Quict View
                                                 </a>
                                             </div>
+                                            <!-- 모달 값 저장용 -->
+                                            <input type="hidden" value="${p.PD_NAME}">
+                                            <input type="hidden" value="${p.PD_PRICE}">
                                         </div>
                                         <div class="product-content">            
                                             <div class="product-title-wishlist">                                            	
@@ -387,8 +399,9 @@
                                 <div class="quick-view-learg-img">
                                     <div class="quick-view-tab-content tab-content">
                                         <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                                        	<!-- modal 이미지1 -->
                                             <img src="assets/img/quick-view/l1.jpg" alt="">
-                                        </div>
+                                        </div>                                                                                
                                         <div class="tab-pane fade" id="modal2" role="tabpanel">
                                             <img src="assets/img/quick-view/l2.jpg" alt="">
                                         </div>
@@ -411,10 +424,10 @@
                             </div>
                             <div class="qwick-view-right">
                                 <div class="qwick-view-content">
-                                    <h3>Handcrafted Supper Mug</h3>
-                                    <div class="price">
+                                    <h3 class="qwick-pd-name">Handcrafted Supper Mug</h3>
+                                    <div class="price qwick-pd-price">
                                         <span class="new">$90.00</span>
-                                        <span class="old">$120.00  </span>
+                                        <!-- <span class="old">$120.00  </span> -->
                                     </div>
                                     <div class="rating-number">
                                         <div class="quick-view-rating">
@@ -425,7 +438,7 @@
                                             <i class="ion-ios-star red-star"></i>
                                         </div>
                                     </div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do tempor incididun ut labore et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
+                                    <p>여기는 상품설명</p>
                                     <div class="quick-view-select">
                                         <div class="select-option-part">
                                             <label>Size*</label>
@@ -462,6 +475,7 @@
                     </div>
                 </div>
             </div>
+            <!-- modal end -->
         </div>
         
         
