@@ -35,7 +35,7 @@
 												</tr>
 											</table>
 										</td>
-									</tr>									
+									</tr>				 					
 								</table>																									
 							</td>
 							<td data-th="판매량" class="text-center">15000</td>
