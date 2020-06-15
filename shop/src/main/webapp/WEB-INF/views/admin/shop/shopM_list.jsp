@@ -35,10 +35,10 @@
 												</tr>
 											</table>
 										</td>
-									</tr>									
+									</tr>				 					
 								</table>																									
 							</td>
-							<td data-th="판매량" class="text-center">150</td>
+							<td data-th="판매량" class="text-center">15000</td>
 							<td class="actions" data-th="">
 								<button class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></button>
 								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
